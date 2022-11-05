@@ -18,9 +18,9 @@
     <property name="driverClass">
        <value>com.mysql.cj.jdbc.Driver</value></property>
     <property name="jdbcUrl">
-       <value>jdbc:mysql://localhost:3306/community?serverTimezone=UTC</value></property>
-    <property name="user"><value>root</value></property>
-    <property name="password"><value>1234</value></property>
+       <value>jdbc:mysql://kic-kit.cqnr9uvbjbgl.ap-northeast-2.rds.amazonaws.com:3306/kic_kit?serverTimezone=UTC</value></property>
+    <property name="user"><value>kickit</value></property>
+    <property name="password"><value>kic20221100</value></property>
     <!-- 최대 연결 객체 갯수 -->    
     <property name="maxPoolSize"><value>20</value></property>
     <!-- 최소 연결 객체 갯수 -->
