@@ -16,6 +16,7 @@ public class UserDao {
 	@Autowired
 	private SqlSessionTemplate template;
 	private Map<String,Object> param = new HashMap<>();
+	
 	public void insert(User user) {
 	    template.getMapper(UserMapper.class).insert(user);	
 	}

@@ -38,7 +38,7 @@ public class UserController {
 
 		} catch(DataIntegrityViolationException e) {
 			e.printStackTrace();
-			mav.addObject("result","회원가입 실패");
+			mav.addObject("result","�쉶�썝媛��엯 �떎�뙣");
 			return mav;
 		}
 		mav.setViewName("redirect:/");

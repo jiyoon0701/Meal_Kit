@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+초기설정 성공
 </body>
 </html>
