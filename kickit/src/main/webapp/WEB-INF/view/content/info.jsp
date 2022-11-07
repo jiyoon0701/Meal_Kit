@@ -71,7 +71,9 @@
 						src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." />
 				</div>
 				<div class="col-md-6">
-					<div class="small mb-1">SKU: 상품코드</div>
+				<div>
+				<img  src="${path}/resources/img/star.png" style = "float:left" width="100px"/> <h2>  5/5</h2> 
+					</div>
 					<h1 class="display-5 fw-bolder">상품명</h1>
 					<div class="fs-5 mb-5">
 						<span>$40.00</span>
