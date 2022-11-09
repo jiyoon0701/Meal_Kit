@@ -1,19 +1,38 @@
 package dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Item {
 	
 		private int itemCode;
 	   private String item;
 	   private int price;
 	   private String content;
-	   private String picture;
+	   private String fileName;
 	   private int quantity;
 	   private String category;
 	   private int recommend;
 	   private int buy;
 	   private float star;
+	   private MultipartFile uploadFile;
 
-	   public String getItem() {
+		public MultipartFile getUploadFile() {
+			return uploadFile;
+		}
+		
+	
+		public void setUploadFile(MultipartFile uploadFile) {
+			this.uploadFile = uploadFile;
+		}
+		public String getFileName() {
+			return fileName;
+	   }
+	
+		public void setFileName(String fileName) {
+			this.fileName = fileName;
+		}
+
+		public String getItem() {
 	      return item;
 	   }
 
@@ -85,21 +104,14 @@ public class Item {
 	      this.itemCode = itemCode;
 	   }
 
-	   public String getPicture() {
-	      return picture;
-	   }
 
-	   public void setPicture(String picture) {
-	      this.picture = picture;
-	   }
-
-	
 	@Override
 	public String toString() {
-		return "itme = [ itemCode = " + itemCode + "itme = " + item + ", price = " + price + ", content = " + content
-				+", picture = "+ picture +", quantity = " + quantity + ", category = " + category + ", recommend ="
-				+ recommend + ", buy = " + buy + ", star = " + star;
+		return "Item [itemCode=" + itemCode + ", item=" + item + ", price=" + price + ", content=" + content
+				+ ", fileName=" + fileName + ", quantity=" + quantity + ", category=" + category + ", recommend="
+				+ recommend + ", buy=" + buy + ", star=" + star + ", uploadFile=" + uploadFile + "]";
 	}
+
 	
 
 	

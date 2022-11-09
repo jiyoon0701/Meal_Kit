@@ -9,7 +9,7 @@
 <body>
 	<div class="controller">
 	<div id="wriTitle"><b>밀키트 등록</b></div>
-		<form action="create" method="post">
+		<form action="create" enctype="multipart/form-data" method="post">
 			<table>
 				<tr>
 					<td width="100px">카테고리</td>
@@ -38,11 +38,12 @@
 							name="content" required id="content"></textarea></td>
 				</tr>
 				<tr>
-					<td align="center"><input type="submit" value="첨부파일" class="button"></td>
+					<td bgcolor="orange" width="70">업로드</td>
+					<td align="left"><input type="file" name="uploadFile" required id="uploadFile"/></td>
 				</tr>
 			</table>
 		<div>
-			<button>등록하기</button>
+			<input type="submit" value="등록하기"/>
 		</div>
 		</form>
 	</div>

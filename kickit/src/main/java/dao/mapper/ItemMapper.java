@@ -16,7 +16,7 @@ public interface ItemMapper {
 	List<Item> selectByCategory(Map<String, Object> param);
 	
 	// 상품 등록
-	@Insert("insert into Item(item, price, content, quantity, category)values(#{item},#{price},#{content},#{quantity},#{category})")
+	@Insert("insert into Item(item, price, content, quantity, category, file_name)values(#{item},#{price},#{content},#{quantity},#{category},#{fileName})")
 	void itemInsert(Item item);
 
 }

@@ -1,11 +1,18 @@
 package controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
+
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import dto.Item;
@@ -27,10 +34,28 @@ public class AdminController {
 	}
 	
 	// 게시물 작성 post
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String postcreate(Item item) throws Exception{
+	@PostMapping("/create")
+	public String postcreate(@ModelAttribute("item")Item item) throws IOException{
+		
+		// 파일 업로드
+		String fileName=null;
+		MultipartFile uploadFile = item.getUploadFile();
+//		System.out.println("너 누구냐?"+item.getUploadFile());
+		System.out.println(item);
+		if(uploadFile != null) {
+			String originalFileName = uploadFile.getOriginalFilename();
+			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
+			UUID uuid = UUID.randomUUID();	//UUID 구하기
+			fileName=uuid+"."+ext;
+			uploadFile.transferTo(new File("C:\\Users\\Yoon\\Documents\\GitHub\\Meal_Kit\\kickit\\src\\main\\webapp\\resource\\image\\" + fileName));
+		}
+		item.setFileName(fileName);
+		
+		//System.out.println(fileName);
 		service.create(item);
 		return "board/create";
 	}
+	
+
 	
 }
