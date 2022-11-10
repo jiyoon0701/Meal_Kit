@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import dao.ItemDao;
 import dto.Item;
+import dto.Review;
 
 @Service
 public class ItemServiceImpl implements ItemService{
@@ -43,7 +44,20 @@ public class ItemServiceImpl implements ItemService{
 		return itemDao.selectItemByKeyword(keyword);
 	}
 
+	public Item getItem(Integer item) {
+		// TODO Auto-generated method stub
+		return itemDao.getItem(item);
+	}
 
+	@Override
+	public List<Review> getReview(Integer item) {
+		// TODO Auto-generated method stub
+		return itemDao.getReview(item);
+	}
 
-	
+//	public void setCart(Cart cart) {
+//		// TODO Auto-generated method stub
+//		itemDao.setCart(cart);
+//	}
+
 }

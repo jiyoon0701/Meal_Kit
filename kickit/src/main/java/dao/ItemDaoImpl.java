@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import dao.mapper.ItemMapper;
+
 import dao.mapper.UserMapper;
 import dto.Item;
+import dto.Review;
 import dto.User;
 
 @Repository
@@ -53,4 +55,25 @@ public class ItemDaoImpl implements ItemDao{
 		param.put("keyword", keyword);
 		return template.getMapper(ItemMapper.class).selectByKeyword(param);
 	}
+
+	@Override
+	public Item getItem(Integer item) {
+		param.clear();
+		param.put("item", item);
+	    return template.getMapper(ItemMapper.class).selectByItem(param);	
+	}
+	
+	@Override
+	public List<Review> getReview(Integer item) {
+		// TODO Auto-generated method stub
+		param.clear();
+		param.put("item", item);
+		return template.getMapper(ItemMapper.class).getReview(param);
+	}
+
+//	@Override
+//	public void setCart(Cart cart) {
+//		// TODO Auto-generated method stub
+//		template.getMapper(ItemMapper.class).setCart(cart);
+//	}
 }
