@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
 
@@ -13,7 +13,7 @@
  <link href="${path}/resources/css/login.css" rel="stylesheet">
 
 <meta charset="EUC-KR">
-<title>∑Œ±◊¿Œ</title>
+<title>Î°úÍ∑∏Ïù∏</title>
 </head>
 <body>
 <c:url value="/login" var="loginUrl" />
@@ -51,8 +51,8 @@
               <i class='bx bxs-lock-alt'></i>
               <input type="text" placeholder="Address" name = "address" id = "address" >
             </div>
-      		  <%-- <sec:csrfInput /> ∂«¥¬  --%>
-      		  <%-- Ω√≈•∏Æ∆º csrf ∂´Ω√ ¿Ã∑∏∞‘ «ÿ¡‡æﬂ«‘ --%>
+      		  <%-- <sec:csrfInput /> ÎòêÎäî  --%>
+      		  <%-- ÏãúÌÅêÎ¶¨Ìã∞ csrf ÎïúÏãú Ïù¥Î†áÍ≤å Ìï¥Ï§òÏïºÌï® --%>
    			 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <button type = "submit">
               Sign up

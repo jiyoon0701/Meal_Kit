@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +10,15 @@
 <div class="container">
     <form action="join" method="post">
         <div class="form-group">
-            <label for="name">�̸�</label>
-            <input type="text" id="name" name="name" placeholder="�̸��� �Է��ϼ���">
-            <label for="id">���̵�</label>
-            <input type="text" id="email" name="email" placeholder="���̵� �Է��ϼ���">
-            <label for="id">��й�ȣ</label>
-            <input type="text" id="password" name="password" placeholder="��й�ȣ�� �Է��ϼ���">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+            <label for="id">아이디</label>
+            <input type="text" id="email" name="email" placeholder="아이디를 입력하세요">
+            <label for="id">비밀번호</label>
+            <input type="text" id="password" name="password" placeholder="비밀번호를 입력하세요">
 		
              </div>
-        <button type="submit">���</button>
+        <button type="submit">등록</button>
     </form>
 </div>
 </body>
