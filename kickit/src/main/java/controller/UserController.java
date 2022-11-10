@@ -3,6 +3,9 @@ package controller;
 import java.security.Principal;
 import java.util.Iterator;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,14 +18,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import dto.User;
-import service.UserService;
+import service.UserServiceImpl;
 
 @Controller
 @RequestMapping("user")
 public class UserController {
 	
 	@Autowired
-	private UserService service;
+	private UserServiceImpl service;
 
 	@PostMapping("join")
 	public ModelAndView join (User user ) {
@@ -45,19 +48,21 @@ public class UserController {
 
 	
 	@RequestMapping("login")
-	public String securityIndex2_2(Model model, Principal principal) {
-		
+	public String securityIndex2_2( HttpServletRequest req,Model model, Principal principal) {
+
 		String id = "";
 		try {
-			if (principal!=null) {
+	
 			id = principal.getName();
+			HttpSession session = req.getSession();
+			session.setAttribute("email",id);
 			System.out.println("user_id="+id);
-			}
+		
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+		 
 		model.addAttribute("id", id);
 		
 		return "user/login";
@@ -68,4 +73,5 @@ public class UserController {
 
 		return "/";
 	}
+	// 로그아웃 시 -> 세션 해제 잊지 말기!
 }

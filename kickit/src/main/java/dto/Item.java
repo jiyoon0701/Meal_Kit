@@ -6,7 +6,7 @@ public class Item {
 	private String item;
 	private int price;
 	private String content;
-	private String picture;
+	private String file_name;
 	private int quantity;
 	private String category;
 	private int recommend;
@@ -85,12 +85,12 @@ public class Item {
 		this.itemCode = itemCode;
 	}
 
-	public String getPicture() {
-		return picture;
+	public String getFile_name() {
+		return file_name;
 	}
 
-	public void setPicture(String picture) {
-		this.picture = picture;
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
 	}
 
 }
