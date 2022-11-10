@@ -13,7 +13,14 @@ public class Item {
 	private int recommend;
 	private int buy;
 	private float star;
+	private int rvCount;
 	
+	public int getRvCount() {
+		return rvCount;
+	}
+	public void setRvCount(int rvCount) {
+		this.rvCount = rvCount;
+	}
 	public int getItemCode() {
 		return itemCode;
 	}
@@ -78,6 +85,6 @@ public class Item {
 	public String toString() {
 		return "Item [itemCode=" + itemCode + ", item=" + item + ", price=" + price + ", content=" + content
 				+ ", picture=" + Arrays.toString(picture) + ", quantity=" + quantity + ", category=" + category
-				+ ", recommend=" + recommend + ", buy=" + buy + ", star=" + star + "]";
+				+ ", recommend=" + recommend + ", buy=" + buy + ", star=" + star + ", rvCount=" + rvCount + "]";
 	}
 }
