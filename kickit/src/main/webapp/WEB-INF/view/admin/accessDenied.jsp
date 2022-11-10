@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +8,10 @@
 </head>
 <body>
 
-<h2>Hello World!</h2>
-<button onClick = "location.href = 'admin/main'">ê´€ë¦¬ì </button>
+	<script>
+	alert("°ü¸®ÀÚ Àü¿ë ÆäÀÌÁöÀÔ´Ï´Ù.");
+	history.back();
+	</script>	
 
 </body>
 </html>
