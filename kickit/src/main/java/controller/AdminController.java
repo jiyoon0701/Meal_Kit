@@ -47,7 +47,7 @@ public class AdminController {
 			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
 			UUID uuid = UUID.randomUUID();	//UUID 구하기
 			fileName=uuid+"."+ext;
-			uploadFile.transferTo(new File("C:\\Users\\Yoon\\Documents\\GitHub\\Meal_Kit\\kickit\\src\\main\\webapp\\resource\\image\\" + fileName));
+			uploadFile.transferTo(new File("C:\\Users\\Yoon\\Documents\\GitHub\\Meal_Kit\\kickit\\src\\main\\webapp\\resource\\img\\" + fileName));
 		}
 		item.setFileName(fileName);
 		
