@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import dto.Cart;
+//import dto.Cart;
 import dto.Item;
 import dto.Review;
 import service.ItemServiceImpl;
@@ -40,22 +40,22 @@ public class ItemController {
 		return mav;
 	}
 	
-	@PostMapping("cart")
-	public String cart(Cart cart, HttpSession session) {
-		
-		String email = null;
-		System.out.println(cart.getItemCode());
-		try {
-			email = (String) session.getAttribute("email");
-			System.out.println(email);
-			if (email != null) {
-				cart.setEmail(email);
-				service.setCart(cart); 
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}  
-		 return "redirect:/content/info?item="+cart.getItemCode();
-	}	
+//	@PostMapping("cart")
+//	public String cart(Cart cart, HttpSession session) {
+//		
+//		String email = null;
+//		System.out.println(cart.getItemCode());
+//		try {
+//			email = (String) session.getAttribute("email");
+//			System.out.println(email);
+//			if (email != null) {
+//				cart.setEmail(email);
+//				service.setCart(cart); 
+//			}
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}  
+//		 return "redirect:/content/info?item="+cart.getItemCode();
+//	}	
 	
 }
