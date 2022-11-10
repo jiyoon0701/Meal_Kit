@@ -6,6 +6,9 @@ import dto.Item;
 
 public interface ItemService {
 	
-	public List<Item> getItemAll();
-	public List<Item> getItemByCategory(String category);
+	public List<Item> getItem();
+	public List<Item> getItem(String category);
+	public List<Item> getItem(String category, String Order);
+	public List<Item> getItemByOrder(String order);
+	public List<Item> getItemByKeyword(String keyword);
 }

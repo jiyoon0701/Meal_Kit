@@ -7,13 +7,26 @@ public class Item {
 	private String item;
 	private int price;
 	private String content;
-	private byte[] picture;
+	private String file_name;
 	private int quantity;
 	private String category;
 	private int recommend;
 	private int buy;
 	private float star;
+	private int rvCount;
 	
+	public String getFile_name() {
+		return file_name;
+	}
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
+	}
+	public int getRvCount() {
+		return rvCount;
+	}
+	public void setRvCount(int rvCount) {
+		this.rvCount = rvCount;
+	}
 	public int getItemCode() {
 		return itemCode;
 	}
@@ -37,12 +50,6 @@ public class Item {
 	}
 	public void setContent(String content) {
 		this.content = content;
-	}
-	public byte[] getPicture() {
-		return picture;
-	}
-	public void setPicture(byte[] picture) {
-		this.picture = picture;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -77,7 +84,9 @@ public class Item {
 	@Override
 	public String toString() {
 		return "Item [itemCode=" + itemCode + ", item=" + item + ", price=" + price + ", content=" + content
-				+ ", picture=" + Arrays.toString(picture) + ", quantity=" + quantity + ", category=" + category
-				+ ", recommend=" + recommend + ", buy=" + buy + ", star=" + star + "]";
+				+ ", file_name=" + file_name + ", quantity=" + quantity + ", category=" + category + ", recommend="
+				+ recommend + ", buy=" + buy + ", star=" + star + ", rvCount=" + rvCount + "]";
 	}
+
+	
 }
