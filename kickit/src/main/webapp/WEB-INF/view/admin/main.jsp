@@ -3,13 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-
-<h2>Hello World!</h2>
-<button onClick = "location.href = 'admin/main'">관리자 </button>
-
+<h1>admin/main 관리자 페이지</h1>
 </body>
 </html>

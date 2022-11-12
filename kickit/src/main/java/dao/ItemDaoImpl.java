@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionManager;
-
 import dao.mapper.ItemMapper;
 import dao.mapper.UserMapper;
 import dto.Item;
@@ -21,15 +20,21 @@ public class ItemDaoImpl implements ItemDao{
 	private SqlSessionTemplate template;
 	private Map<String,Object> param = new HashMap<>();
 
+
 	
 	
 	@Override
 	public List<Item> selectAll() {
 		return template.getMapper(ItemMapper.class).selectAll();
 	}
-	
+
 	@Override
-	public List<Item> selectByCategory(String category) {
+	public List<Item> selectItem() {
+		return template.getMapper(ItemMapper.class).selectAll();
+	}
+
+	@Override
+	public List<Item> selectItemByCategory(String category) {
 		param.clear();
 		param.put("category",category);
 		return template.getMapper(ItemMapper.class).selectByCategory(param);
@@ -39,4 +44,28 @@ public class ItemDaoImpl implements ItemDao{
 	public void create(Item item) {		
 		template.getMapper(ItemMapper.class).itemInsert(item);
 	}
+
+	@Override
+	public List<Item> selectItemByOrder(String order) {
+		param.clear();
+		param.put("order",order);
+		return template.getMapper(ItemMapper.class).selectByOrder(param);
+	}
+
+	@Override
+	public List<Item> selectItemByCategoryAndOrder(String category, String order) {
+		param.clear();
+		param.put("order", order);
+		param.put("category", category);
+		System.out.println("param :"+param);
+		return template.getMapper(ItemMapper.class).selectByCategoryAndOrder(param);
+	}
+
+	@Override
+	public List<Item> selectItemByKeyword(String keyword) {
+		param.clear();
+		param.put("keyword", keyword);
+		return template.getMapper(ItemMapper.class).selectByKeyword(param);
+	}
 }
+

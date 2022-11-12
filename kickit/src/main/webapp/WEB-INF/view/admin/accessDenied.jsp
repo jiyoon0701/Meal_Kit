@@ -8,8 +8,10 @@
 </head>
 <body>
 
-<h2>Hello World!</h2>
-<button onClick = "location.href = 'admin/main'">관리자 </button>
+	<script>
+	alert("관리자 전용 페이지입니다.");
+	history.back();
+	</script>	
 
 </body>
 </html>
