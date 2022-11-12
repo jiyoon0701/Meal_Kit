@@ -1,7 +1,6 @@
 package service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,7 @@ import dto.Item;
 public class ItemServiceImpl implements ItemService{
 	@Autowired
 	private ItemDao itemDao;
-
+	
 	@Override
 	public List<Item> getItem() {
 		// TODO Auto-generated method stub
@@ -43,7 +42,13 @@ public class ItemServiceImpl implements ItemService{
 		return itemDao.selectItemByKeyword(keyword);
 	}
 
+	@Override
+	public void create(Item item) {
+		itemDao.create(item);
+	}
+
 
 
 	
 }
+

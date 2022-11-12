@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <h2>Hello World!</h2>
 <button onClick = "location.href = 'admin/main'">관리자 </button>
 

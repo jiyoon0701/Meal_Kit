@@ -1,26 +1,35 @@
 package dto;
 
-import java.util.Arrays;
 
+import org.springframework.web.multipart.MultipartFile;
 public class Item {
 	private int itemCode;
 	private String item;
 	private int price;
 	private String content;
-	private String file_name;
+	private String fileName;
 	private int quantity;
 	private String category;
 	private int recommend;
 	private int buy;
 	private float star;
 	private int rvCount;
+	private MultipartFile uploadFile;
+
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	public String getFileName() {
+		return fileName;
+	}
 	
-	public String getFile_name() {
-		return file_name;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
-	public void setFile_name(String file_name) {
-		this.file_name = file_name;
-	}
+
 	public int getRvCount() {
 		return rvCount;
 	}
@@ -84,9 +93,7 @@ public class Item {
 	@Override
 	public String toString() {
 		return "Item [itemCode=" + itemCode + ", item=" + item + ", price=" + price + ", content=" + content
-				+ ", file_name=" + file_name + ", quantity=" + quantity + ", category=" + category + ", recommend="
+				+ ", file_name=" + fileName + ", quantity=" + quantity + ", category=" + category + ", recommend="
 				+ recommend + ", buy=" + buy + ", star=" + star + ", rvCount=" + rvCount + "]";
 	}
-
-	
 }

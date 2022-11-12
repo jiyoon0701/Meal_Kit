@@ -7,7 +7,8 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionManager;
 import dao.mapper.ItemMapper;
 import dao.mapper.UserMapper;
 import dto.Item;
@@ -19,6 +20,14 @@ public class ItemDaoImpl implements ItemDao{
 	private SqlSessionTemplate template;
 	private Map<String,Object> param = new HashMap<>();
 
+
+	
+	
+	@Override
+	public List<Item> selectAll() {
+		return template.getMapper(ItemMapper.class).selectAll();
+	}
+
 	@Override
 	public List<Item> selectItem() {
 		return template.getMapper(ItemMapper.class).selectAll();
@@ -29,6 +38,11 @@ public class ItemDaoImpl implements ItemDao{
 		param.clear();
 		param.put("category",category);
 		return template.getMapper(ItemMapper.class).selectByCategory(param);
+	}
+	
+	@Override
+	public void create(Item item) {		
+		template.getMapper(ItemMapper.class).itemInsert(item);
 	}
 
 	@Override
@@ -54,3 +68,4 @@ public class ItemDaoImpl implements ItemDao{
 		return template.getMapper(ItemMapper.class).selectByKeyword(param);
 	}
 }
+
