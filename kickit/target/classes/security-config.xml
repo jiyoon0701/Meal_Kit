@@ -35,9 +35,9 @@
 		
 		<form-login
 			login-page="/user/login"
-			default-target-url="/"
-			authentication-failure-url="/user/login"
-			login-processing-url="/login"
+			default-target-url="/user/main"
+			authentication-failure-url= "/user/login?error"
+			login-processing-url="/loginAction"
 			username-parameter="email"
 			password-parameter="password"
 			/>

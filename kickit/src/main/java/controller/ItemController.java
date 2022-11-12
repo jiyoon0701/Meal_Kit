@@ -1,5 +1,6 @@
 package controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,35 +28,27 @@ public class ItemController {
 
 	@Autowired
 	ItemServiceImpl service;
-	Map<String, Object> param = new HashMap();
-	
+
 	@GetMapping("info")
 	public ModelAndView info(@RequestParam("item") Integer item) {
 		ModelAndView mav = new ModelAndView();
-		
-		  Item items = service.getItem(item); 
-		  List<Review> review = service.getReview(item);
-		  mav.addObject("items",items); //item 객체에
-		  mav.addObject("Review",review);
+
+		Item items = service.getItem(item);
+		List<Review> review = service.getReview(item);
+		mav.addObject("items", items); // item 객체에
+		mav.addObject("Review", review);
 		return mav;
 	}
-	
-//	@PostMapping("cart")
-//	public String cart(Cart cart, HttpSession session) {
-//		
-//		String email = null;
-//		System.out.println(cart.getItemCode());
-//		try {
-//			email = (String) session.getAttribute("email");
-//			System.out.println(email);
-//			if (email != null) {
-//				cart.setEmail(email);
-//				service.setCart(cart); 
-//			}
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}  
-//		 return "redirect:/content/info?item="+cart.getItemCode();
-//	}	
-	
+
+	@PostMapping("cart") // 장바구니
+	public String cart(Cart cart, Principal principal) {
+
+		String email = principal.getName();
+
+		cart.setEmail(email);
+		service.setCart(cart);
+
+		return "redirect:/content/info?item=" + cart.getItemCode();
+	}
+
 }
