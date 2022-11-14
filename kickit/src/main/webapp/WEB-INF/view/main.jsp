@@ -72,6 +72,9 @@
 			<c:if test="${not empty user_id }">
 				<p>${user_id }님 , 하이룽~!</p>
 			</c:if>	
+			<button onclick="window.open('http://localhost:8090/kickit/userProfile', 'userProfile', 'width=430, height=500, location=no, status=no, scrollbars=yes');">사용자 정보</button>
+	        <button onclick="window.open('http://localhost:8090/kickit/review?id=4', 'registerReview', 'width=430, height=500, location=no, status=no, scrollbars=yes');">리뷰작성</button>
+	        
 	        <!-- Navigation-->
 	        <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	            <div class="container px-4 px-lg-5">
