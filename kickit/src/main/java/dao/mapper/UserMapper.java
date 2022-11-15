@@ -19,4 +19,6 @@ public interface UserMapper {
 	@Select("select * from User where email=#{email}")
 	User selectOne(Map<String, Object> param);
 
+	@Select("update User set password=#{password},name=#{name},tel=#{tel},address=#{address} where email=#{email}")
+	void updateUserProfile(Map<String, Object> param);
 }

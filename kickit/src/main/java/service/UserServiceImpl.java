@@ -13,12 +13,22 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserDao userDao;
 	
+	@Override
 	public void userInsert(User user) {
 		userDao.insert(user);
 	}
 
+	@Override
 	public User getUser(String email) {
 		return userDao.selectOne(email);
+
+	}
+
+	@Override
+	public void updateUserProfile(User user) {
+		// TODO Auto-generated method stub
+		userDao.updateUserProfile(user);
+
 	}
 
 }

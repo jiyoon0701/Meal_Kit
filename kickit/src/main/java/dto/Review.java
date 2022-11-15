@@ -9,9 +9,17 @@ public class Review {
 	private Date date;
 	private Blob picture; 
 	private String content;
-	private int star;
+	private float star;
 	private int itemCode;
+	private String item;
+	private String title;
 	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public int getId() {
 		return id;
 	}
@@ -36,10 +44,12 @@ public class Review {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public int getStar() {
+	
+	
+	public float getStar() {
 		return star;
 	}
-	public void setStar(int star) {
+	public void setStar(float star) {
 		this.star = star;
 	}
 	public int getItemCode() {
@@ -48,5 +58,16 @@ public class Review {
 	public void setItemCode(int itemCode) {
 		this.itemCode = itemCode;
 	}
-
+	public String getItem() {
+		return item;
+	}
+	public void setItem(String item) {
+		this.item = item;
+	}
+	@Override
+	public String toString() {
+		return "Review [id=" + id + ", date=" + date + ", picture=" + picture + ", content=" + content + ", star="
+				+ star + ", itemCode=" + itemCode + ", item=" + item + ", title=" + title + "]";
+	}
+	
 }
