@@ -79,6 +79,7 @@
 			<p>주소 : ${userinfo.address }</p>
 			<p>포인트 : ${userinfo.point }</p>
 			<hr>
+			<button onclick="window.open('http://localhost:8090/kickit/userProfile', 'userProfile', 'width=430, height=500, location=no, status=no, scrollbars=yes');">사용자 정보</button>
 		</div>
 	</div>
 	<hr>
@@ -105,6 +106,7 @@
 			<p>구매날짜 : ${itemPuchase.date }</p>
 			<%-- <img src="${cartList[0].filename }" name="filename"> --%>
 			<hr>
+			<button onclick="window.open('http://localhost:8090/kickit/review?id=4', 'registerReview', 'width=430, height=500, location=no, status=no, scrollbars=yes');">리뷰작성</button>
 		</div>
 		</c:forEach>	
 	</div>

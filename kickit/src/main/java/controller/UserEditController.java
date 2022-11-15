@@ -1,5 +1,7 @@
 package controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +25,8 @@ public class UserEditController {
 	UserService userService;
 
 	@GetMapping("")
-	public String getUserProfile(Model model) {
-		String email = "tester@gmail.com";
+	public String getUserProfile(Model model, Principal principal) {
+		String email = principal.getName();
 		System.out.println("start getUserProfile Method");
 		User user = userService.getUser(email);
 		model.addAttribute("user",user);
