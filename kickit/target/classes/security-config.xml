@@ -31,6 +31,7 @@
 		<!-- 해당 경로는 ADMIN 권한을 얻은 후 접근할 수 있다. -->
 		<intercept-url pattern="/admin/**" access="hasRole('ADMIN')"/>
 		<!-- USER, ADMIN 권한중 하나의 권한만 있으면 접근할수 있다. -->
+		<intercept-url pattern="/kakao" access="hasAnyRole('USER')"/>
 		<intercept-url pattern="/user" access="hasAnyRole('USER, ADMIN')"/>
 		<intercept-url pattern="/**" access="permitAll"/>
 		

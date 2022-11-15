@@ -13,6 +13,7 @@ import dao.mapper.ItemMapper;
 import dao.mapper.UserMapper;
 import dto.Cart;
 import dto.Item;
+import dto.PurchaseOrder;
 import dto.Review;
 import dto.User;
 
@@ -76,5 +77,11 @@ public class ItemDaoImpl implements ItemDao{
 	public void setCart(Cart cart) {
 		// TODO Auto-generated method stub
 		template.getMapper(ItemMapper.class).setCart(cart);
+	}
+
+	@Override
+	public void setPurchaseOrder(List<PurchaseOrder> po) {
+		// TODO Auto-generated method stub
+		template.getMapper(ItemMapper.class).setPurchaseOrder(po);
 	}
 }

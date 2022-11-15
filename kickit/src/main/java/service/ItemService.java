@@ -4,6 +4,7 @@ import java.util.List;
 
 import dto.Cart;
 import dto.Item;
+import dto.PurchaseOrder;
 import dto.Review;
 
 public interface ItemService {
@@ -16,4 +17,5 @@ public interface ItemService {
 	public Item getItem(Integer item);
 	public List<Review> getReview(Integer item);
 	public void setCart(Cart cart);
+	public void setPurchaseOrder(List<PurchaseOrder> po);
 }
