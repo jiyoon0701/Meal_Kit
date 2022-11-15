@@ -11,7 +11,7 @@ import dao.mapper.UserMapper;
 import dto.User;
 
 @Repository
-public class UserDaoImpl {
+public class UserDaoImpl implements UserDao {
 	
 	@Autowired
 	private SqlSessionTemplate template;

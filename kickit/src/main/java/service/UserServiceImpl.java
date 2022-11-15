@@ -2,21 +2,23 @@ package service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import dao.UserDao;
 import dao.UserDaoImpl;
 import dto.User;
 
 @Service
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService{
 
 	@Autowired
-	private UserDaoImpl userDaoImpl;
+	private UserDao userDao;
 	
 	public void userInsert(User user) {
-		userDaoImpl.insert(user);
+		userDao.insert(user);
 	}
 
 	public User getUser(String email) {
-		return userDaoImpl.selectOne(email);
+		return userDao.selectOne(email);
 	}
 
 }

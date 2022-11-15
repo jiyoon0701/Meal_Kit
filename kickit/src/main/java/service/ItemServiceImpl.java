@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import dao.ItemDao;
 import dto.Cart;
 import dto.Item;
+import dto.PurchaseOrder;
 import dto.Review;
 
 @Service
@@ -59,6 +60,12 @@ public class ItemServiceImpl implements ItemService{
 	public void setCart(Cart cart) {
 		// TODO Auto-generated method stub
 	itemDao.setCart(cart);
+	}
+
+	@Override
+	public void setPurchaseOrder(List<PurchaseOrder> po) {
+		// TODO Auto-generated method stub
+		itemDao.setPurchaseOrder(po);
 	}
 
 
