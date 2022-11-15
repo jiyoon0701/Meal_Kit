@@ -7,6 +7,9 @@
 
 <html lang="en">
 <head>
+  <%-- <sec:csrfMetaTags /> 또는 --%>
+    <meta name="_csrf_header" content="${_csrf.headerName}" />
+    <meta name="_csrf" content="${_csrf.token}" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -24,6 +27,11 @@
 	rel="stylesheet" />
 <meta charset="EUC-KR">
 <title>상품 상세 페이지</title>
+
+</head>
+<body>
+	<h2>사용자 로그인</h2>
+	<div id="apibtn">카카오페이</div>
 </head>
 <body>
 	<c:set var="path" value="${pageContext.request.contextPath}" />
@@ -71,34 +79,37 @@
 						src="${path}/resources/img/${items.file_name}" alt="..." />
 				</div>
 				<div class="col-md-6">
-				<div>
-				<img  src="${path}/resources/img/star.png" style = "float:left" width="100px"/> <h2>  5/5</h2> 
+					<div>
+						<img src="${path}/resources/img/star.png" style="float: left"
+							width="100px" />
+						<h2>5/5</h2>
 					</div>
 					<h1 class="display-5 fw-bolder">${items.item}</h1>
 					<div class="fs-5 mb-5">
 						<span>${items.price}</span>
 					</div>
 					<p class="lead">간략하게 한 줄 소개 ..?</p>
-						<div class="d-flex">
-					<form name = "cartForm" action = "cart" method = "POST">
-				
-						<input class="form-control text-center me-3" id="quantity" name = "quantity"
-							type="num" value="1" style="max-width: 3rem" />
-							<input type = "hidden" value = "${items.itemCode}" name = "itemCode" id = "itemCode" />
-							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
-							<button class="btn btn-outline-dark flex-shrink-0" >
-							<i class="bi-cart-fill me-1"></i> 장바구니 담기
-						</button>
-		
-							</form>
-							</div>
-						
+					<div class="d-flex">
+						<form name="cartForm" action="cart" method="POST">
+
+							<input class="form-control text-center me-3" id="quantity"
+								name="quantity" type="num" value="1" style="max-width: 3rem" />
+							<input type="hidden" value="${items.itemCode}" name="itemCode"
+								id="itemCode" /> <input type="hidden"
+								name="${_csrf.parameterName}" value="${_csrf.token}" />
+							<button class="btn btn-outline-dark flex-shrink-0">
+								<i class="bi-cart-fill me-1"></i> 장바구니 담기
+							</button>
+						</form>
+					
 					</div>
-				</div>
-				<div>
-					<p style="margin-top: 100px;"> ${items.content} </p>
+
 				</div>
 			</div>
+			<div>
+				<p style="margin-top: 100px;">${items.content}</p>
+			</div>
+		</div>
 		</div>
 	</section>
 
@@ -109,65 +120,66 @@
 
 			<div class="card-body">
 				<h2 style="padding-bottom: 20px;">후기</h2>
-				<!-- Comment form-->
-				<%--    <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form> --%>
-				<!-- Comment with nested comments-->
-				
 				<c:forEach var="review" items="${Review}" varStatus="status">
-    				
 
-			
-				<div class="d-flex mb-4">
-					<!-- Parent comment-->
-					<div class="flex-shrink-0">
-						<img class="rounded-circle"
-							src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."
-							width="240px" />
+					<div class="d-flex mb-4">
+						<!-- Parent comment-->
+						<div class="flex-shrink-0">
+							<img class="rounded-circle"
+								src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."
+								width="240px" />
+						</div>
+						<div class="ms-3">
+							<div class="fw-bold">${review.id}</div>
+							<img style="" src="${path}/resources/img/star.png" width="100px" />
+							<p>${review.content }</p>
+						</div>
+
 					</div>
-					<div class="ms-3">
-						<div class="fw-bold">${review.id}</div>
-						<img style="" src="${path}/resources/img/star.png" width="100px" />
-						<p>${review.content }</p>
-					</div>
-				
-			</div>
-			</c:forEach>
-				<!-- Single comment-->
-			<%-- 	<div class="d-flex mb-4">
-					<!-- Parent comment-->
-					<div class="flex-shrink-0">
-						<img class="rounded-circle"
-							src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."
-							width="240px" />
-					</div>
-					<div class="ms-3">
-						<div class="fw-bold">닉네임 or 아이디</div>
-						<img style="" src="${path}/resources/img/star.png" width="100px" />
-						<p>후기 내용</p>
-					</div>
-				</div> --%>
+				</c:forEach>
 			</div>
 		</div>
 	</section>
-
-	<!-- Related items section-->
-	<!-- <section class="py-5 bg-light">
-            <div class="container px-4 px-lg-5 mt-5">
-                <h2 class="fw-bolder mb-4">후기</h2>
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"></div>
-            </div>
-        </section> -->
-	<!-- Footer-->
 	<footer class="py-5 bg-dark">
 		<div class="container">
 			<p class="m-0 text-center text-white">Copyright &copy; Your
 				Website 2022</p>
 		</div>
+			<input type = "button" id = "apibtn" class="aa">구매하기
 	</footer>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="${path}/resources/js/itemInfo.js" rel="stylesheet"></script>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script> 
+<script type="text/javascript">	
+
+const header = $("meta[name='_csrf_header']").attr("content");
+const token = $("meta[name='_csrf']").attr("content");
+
+	$(document).on("click", "#apibtn", function(){
+		$.ajax({
+			type : 'POST',
+			url:'/kickit/kakao/kakaopay',
+			dataType:'json',
+			data : {
+				po : [{itemCode:"2"}],
+				item : "바나나",
+				totalQuantity : "4",
+				totalPrice : "10000" 
+		},
+			success : function(data){
+				window.open(data.next_redirect_pc_url);
+			},
+			error : function(error){
+				alert(error);
+			},beforeSend: function(xhr){
+				xhr.setRequestHeader(header, token);	// 헤드의 csrf meta태그를 읽어 CSRF 토큰 함께 전송
+			}
+	})
+		});
+</script>
 </body>
 </html>

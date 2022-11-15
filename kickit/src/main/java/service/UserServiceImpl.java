@@ -21,12 +21,14 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User getUser(String email) {
 		return userDao.selectOne(email);
+
 	}
 
 	@Override
 	public void updateUserProfile(User user) {
 		// TODO Auto-generated method stub
 		userDao.updateUserProfile(user);
+
 	}
 
 }

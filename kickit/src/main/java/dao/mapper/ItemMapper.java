@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Select;
 
 import dto.Cart;
 import dto.Item;
-
+import dto.PurchaseOrder;
 
 import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Repository;
@@ -39,4 +39,7 @@ public interface ItemMapper {
 	
 	@Select("select * from Item where item like '%${keyword}%'")
 	List<Item> selectByKeyword(Map<String,Object> param);
+	
+	@Insert("insert into PurchaseOrder(itemCode, email, quantity) values(#{itemCode}, #{email}, #{quantity})")
+	List<Item> setPurchaseOrder(List<PurchaseOrder> po);
 }
