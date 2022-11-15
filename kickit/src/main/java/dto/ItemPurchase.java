@@ -2,7 +2,8 @@ package dto;
 
 import java.util.Date;
 
-public class ItemPurchase {
+public class ItemPurchase{
+	private int id;
 	private int itemCode;
 	private String email;
 	private Date date;
@@ -11,6 +12,12 @@ public class ItemPurchase {
 	private int price;
 	private String file_name;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public int getItemCode() {
 		return itemCode;
 	}

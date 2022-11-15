@@ -106,7 +106,7 @@
 			<p>구매날짜 : ${itemPuchase.date }</p>
 			<%-- <img src="${cartList[0].filename }" name="filename"> --%>
 			<hr>
-			<button onclick="window.open('http://localhost:8090/kickit/review?id=4', 'registerReview', 'width=430, height=500, location=no, status=no, scrollbars=yes');">리뷰작성</button>
+			<button onclick="window.open('http://localhost:8090/kickit/review?id=${itemPuchase.id}', 'registerReview', 'width=430, height=500, location=no, status=no, scrollbars=yes');">리뷰작성</button>
 		</div>
 		</c:forEach>	
 	</div>
