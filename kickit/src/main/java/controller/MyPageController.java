@@ -26,14 +26,13 @@ import service.UserService;
 @RequestMapping("mypage")
 public class MyPageController {
 	@Autowired
-	private CartServiceImpl cartservice;
+	private CartService cartservice;
 	
 	@Autowired
 	private ItemPurchaseService itemPurchaseService;
 	
-	
-	
-	
+	@Autowired
+	private UserService userService;
 	
 	@GetMapping("")
 	public String getItemPurchase(Model model, HttpServletRequest request, Principal principal) {
@@ -48,7 +47,8 @@ public class MyPageController {
 	
 	public String getUser(Principal principal, Model model) {
 		String email = principal.getName();
-		model.addAtrribute("userinfo", (User)UserService.getUser(email));
+		User user = userService.getUser(email);
+		model.addAttribute("userinfo", user);
 		return "mypage";
 	}
 	
@@ -58,7 +58,7 @@ public class MyPageController {
 	   User user = (User)session.getAttribute("user");
 	   String userEmail = user.getEmail();
 	   
-	   List<Cart> cartList = CartService.getCart(userEmail);
+	   List<Cart> cartList = cartservice.getCart(userEmail);
 	   
 	   model.addAttribute("cartList", cartList);
 	   
