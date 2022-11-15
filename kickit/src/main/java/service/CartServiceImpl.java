@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dao.CartDao;
-import dto.Cart;
+import dto.CartList;
 
 @Service
 public class CartServiceImpl implements CartService {
@@ -14,8 +14,8 @@ public class CartServiceImpl implements CartService {
 	private CartDao cartDao;
 	
 	@Override
-	public List<Cart>getCart(String email){
-		List<Cart> cart = cartDao.getCart(email);
+	public List<CartList>getCart(String email){
+		List<CartList> cart = cartDao.getCart(email);
 		return cart;
 	}
 

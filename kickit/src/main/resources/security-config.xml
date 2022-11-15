@@ -25,6 +25,7 @@
 		있도록 설정해야 한다. -->
 		<intercept-url pattern="/resources/**" access="permitAll"/>
 		<intercept-url pattern="/content" access="permitAll"/>
+		<intercept-url pattern="/mypage" access="permitAll"/>
 		<intercept-url pattern="/user/login" access="permitAll"/>
 		
 		<!-- 해당 경로는 ADMIN 권한을 얻은 후 접근할 수 있다. -->

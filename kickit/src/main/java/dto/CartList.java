@@ -1,16 +1,22 @@
 package dto;
 
-import java.util.Date;
-
-public class ItemPurchase {
+public class CartList {
+	private int id;
 	private int itemCode;
 	private String email;
-	private Date date;
 	private int quantity;
 	private String item;
 	private int price;
+	private String content;
 	private String file_name;
+	private String catogory;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public int getItemCode() {
 		return itemCode;
 	}
@@ -22,12 +28,6 @@ public class ItemPurchase {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -47,12 +47,30 @@ public class ItemPurchase {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public String getFile_name() {
 		return file_name;
 	}
 	public void setFile_name(String file_name) {
 		this.file_name = file_name;
 	}
+	public String getCatogory() {
+		return catogory;
+	}
+	public void setCatogory(String catogory) {
+		this.catogory = catogory;
+	}
+	@Override
+	public String toString() {
+		return "CartList [id=" + id + ", itemCode=" + itemCode + ", email=" + email + ", quantity=" + quantity
+				+ ", item=" + item + ", price=" + price + ", content=" + content + ", file_name=" + file_name
+				+ ", catogory=" + catogory + "]";
+	}
 
-
+	
 }

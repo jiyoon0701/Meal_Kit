@@ -9,6 +9,8 @@ import dao.ItemPurchaseDao;
 import dto.ItemPurchase;
 
 public interface ItemPurchaseMapper {
-	@Select("select id, itemCode, email, date, quantity from PurchaseOrder where email=#{email} ")
+	@Select("select p.id, p.itemCode, p.email, p.date, p.quantity, i.item, i.price, i.file_name from PurchaseOrder p "
+			+ "inner join Item i on p.itemCode = i.itemCode where p.email=#{email} ")
 	List<ItemPurchase> selectByPurchase(Map<String, Object>param);
+	
 }

@@ -6,7 +6,7 @@ import dao.UserDaoImpl;
 import dto.User;
 
 @Service
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDaoImpl userDaoImpl;

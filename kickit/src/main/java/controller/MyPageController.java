@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import dto.Cart;
+import dto.CartList;
 import dto.ItemPurchase;
 import dto.User;
 import service.CartService;
@@ -33,46 +34,18 @@ public class MyPageController {
 	
 	@Autowired
 	private UserService userService;
-	
-	@GetMapping("")
-	public String getItemPurchase(Model model, HttpServletRequest request, Principal principal) {
-		System.out.println("start getItemPurchase method");
-		String email = principal.getName();
-		System.out.println("email :"+ email);
-		
-		List<ItemPurchase> items = itemPurchaseService.getItemPurchase(email);
-		model.addAttribute("items",items);
-		return "mypage";
-	}
-	
-	public String getUser(Principal principal, Model model) {
+
+	@GetMapping("mypage2")
+	public String getUser(Principal principal, Model model) throws Exception {
 		String email = principal.getName();
 		User user = userService.getUser(email);
+		List<ItemPurchase> itemPuchase = itemPurchaseService.getItemPurchase(email);
+		List<CartList> cartList = cartservice.getCart(email);
+		System.out.print(cartList);
+		model.addAttribute("itemPuchase",itemPuchase);
 		model.addAttribute("userinfo", user);
-		return "mypage";
+		model.addAttribute("cartList", cartList);
+		return "user/mypage";
 	}
-	
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public void getCartList(HttpSession session, Model model) throws Exception {
-	   
-	   User user = (User)session.getAttribute("user");
-	   String userEmail = user.getEmail();
-	   
-	   List<Cart> cartList = cartservice.getCart(userEmail);
-	   
-	   model.addAttribute("cartList", cartList);
-	   
-	}
-	
-	/*
-	 * @GetMapping("") public String getCart(Cart cart, Principal principal, Model
-	 * model) {
-	 * 
-	 * String email = principal.getName();
-	 * 
-	 * Cart.getEmail(); model.addAllAttributes("cartInfo", CartService) return
-	 * "mypage"; }
-	 */
-	
 
 }
