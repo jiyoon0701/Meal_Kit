@@ -8,7 +8,8 @@ import dao.UserDaoImpl;
 import dto.User;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
+
 
 	@Autowired
 	private UserDao userDao;
@@ -30,5 +31,7 @@ public class UserServiceImpl implements UserService{
 		userDao.updateUserProfile(user);
 
 	}
+	
+	
 
 }
