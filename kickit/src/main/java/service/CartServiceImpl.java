@@ -14,8 +14,9 @@ public class CartServiceImpl implements CartService {
 	private CartDao cartDao;
 	
 	@Override
-	public List<Cart> getCart(String email){
-		return cartDao.selectCart(email);
+	public List<Cart>getCart(String email){
+		List<Cart> cart = cartDao.getCart(email);
+		return cart;
 	}
 
 }

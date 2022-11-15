@@ -18,5 +18,7 @@ public class UserServiceImpl {
 	public User getUser(String email) {
 		return userDaoImpl.selectOne(email);
 	}
+	
+	
 
 }

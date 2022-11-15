@@ -6,6 +6,6 @@ import dto.Cart;
 
 public interface CartService {
 	
-	public List<Cart> getCart(String email);
+	public List<Cart> getCart(String email) throws Exception;
 
 }

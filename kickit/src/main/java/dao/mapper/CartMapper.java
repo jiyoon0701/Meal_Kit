@@ -11,7 +11,9 @@ import dto.Cart;
 @Repository
 public interface CartMapper {
 	
-	@Select("select * from Cart where email=#{email}")
+	@Select("select c.id, c.itemCode, c.email, c.quantity"
+			+ "i.itemCode, i.item. i.price, i.content, i.file_name, i.category from Cart c "
+			+ "inner join Item i on c.itemCode = i.itemCode where c.email=#{email}")
 	List<Cart> selectCart(Map<String, Object> param);
 
 }

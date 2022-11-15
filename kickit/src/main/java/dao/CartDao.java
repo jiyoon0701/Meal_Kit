@@ -5,6 +5,6 @@ import java.util.List;
 import dto.Cart;
 
 public interface CartDao {
-	public List<Cart> selectCart(String email);
+	public List<Cart> getCart(String email);
 
 }

@@ -8,20 +8,19 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import dao.mapper.CartMapper;
-import dto.Cart;
+import dao.mapper.ItemPurchaseMapper;
+import dto.ItemPurchase;
 
 @Repository
-public class CartDaoImpl implements CartDao{
+public class ItemPurchaseImpl implements ItemPurchaseDao{
 	@Autowired
 	private SqlSessionTemplate template;
 	private Map<String, Object> param = new HashMap<>();
 	
 	@Override
-	public List<Cart>getCart(String email) {
+	public List<ItemPurchase> selectByPurchase(String email) {
 		param.clear();
-		param.put("email", email);
-		return template.getMapper(CartMapper.class).selectCart(param);
-		
+		param.put("email",email);
+		return template.getMapper(ItemPurchaseMapper.class).selectByPurchase(param);
 	}
 }
