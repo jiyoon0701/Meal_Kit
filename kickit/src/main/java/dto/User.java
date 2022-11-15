@@ -60,4 +60,9 @@ public class User implements GrantedAuthority {
 		// TODO Auto-generated method stub
 		return authority;
 	}
+	@Override
+	public String toString() {
+		return "User [email=" + email + ", password=" + password + ", name=" + name + ", tel=" + tel + ", address="
+				+ address + ", point=" + point + ", authority=" + authority + "]";
+	}
 }

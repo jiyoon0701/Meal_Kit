@@ -6,4 +6,5 @@ public interface UserDao {
 	
 	public void insert(User user);
 	public User selectOne(String email);
+	public void updateUserProfile(User user);
 }
