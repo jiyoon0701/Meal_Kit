@@ -20,6 +20,13 @@ public class ItemPurchaseServiceImpl implements ItemPurchaseService{
 	public List<ItemPurchase> getItemPurchase(String email) {
 		return itemPurchaseDao.selectByPurchase(email);
 	}
+
+
+	@Override
+	public List<ItemPurchase> getRevenue() {
+		// TODO Auto-generated method stub
+		return itemPurchaseDao.selectRevenue();
+	}
 	
 
 }

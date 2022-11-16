@@ -68,6 +68,12 @@ public class ItemServiceImpl implements ItemService{
 		itemDao.setPurchaseOrder(po);
 	}
 
+	@Override
+	public void deleteItemByItemCode(String itemCode) {
+		// TODO Auto-generated method stub
+		itemDao.deleteItemByItemCode(itemCode);
+	}
+
 
 
 }

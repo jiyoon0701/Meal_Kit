@@ -23,4 +23,10 @@ public class ItemPurchaseImpl implements ItemPurchaseDao{
 		param.put("email",email);
 		return template.getMapper(ItemPurchaseMapper.class).selectByPurchase(param);
 	}
+
+	@Override
+	public List<ItemPurchase> selectRevenue() {
+		// TODO Auto-generated method stub
+		return template.getMapper(ItemPurchaseMapper.class).selectRevenue();
+	}
 }

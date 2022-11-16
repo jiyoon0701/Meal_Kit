@@ -84,4 +84,12 @@ public class ItemDaoImpl implements ItemDao{
 		// TODO Auto-generated method stub
 		template.getMapper(ItemMapper.class).setPurchaseOrder(po);
 	}
+
+	@Override
+	public void deleteItemByItemCode(String itemCode) {
+		// TODO Auto-generated method stub
+		param.clear();
+		param.put("itemCode", itemCode);
+		template.getMapper(ItemMapper.class).deleteItem(param);
+	}
 }

@@ -18,4 +18,5 @@ public interface ItemService {
 	public List<Review> getReview(Integer item);
 	public void setCart(Cart cart);
 	public void setPurchaseOrder(List<PurchaseOrder> po);
+	public void deleteItemByItemCode(String itemCode);
 }

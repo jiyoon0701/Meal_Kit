@@ -6,4 +6,5 @@ import dto.ItemPurchase;
 
 public interface ItemPurchaseDao {
 	public List<ItemPurchase> selectByPurchase(String email);
+	public List<ItemPurchase> selectRevenue();
 }

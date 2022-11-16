@@ -8,6 +8,7 @@ import dto.Cart;
 import dto.Item;
 import dto.PurchaseOrder;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Repository;
 
@@ -25,7 +26,7 @@ public interface ItemMapper {
 	@Insert("insert into Cart(itemCode, email, quantity) values(#{itemCode},#{email}, #{quantity})")
 	void setCart(Cart cart);
 
-	@Select("select itemCode, item, price,category,recommend,buy,star from Item ")
+	@Select("select * from Item ")
 	List<Item> selectAll();
 	
 	@Select("select I.itemCode,I.item,I.price,I.category,I.recommend,I.buy,I.star, count(R.id) as rvCount from Item as I left join Review as R on I.itemCode =R.itemCode where category = #{category} group by itemCode")
@@ -42,4 +43,7 @@ public interface ItemMapper {
 	
 	@Insert("insert into PurchaseOrder(itemCode, email, quantity) values(#{itemCode}, #{email}, #{quantity})")
 	List<Item> setPurchaseOrder(List<PurchaseOrder> po);
+	
+	@Delete("delete from Item where itemCode=#{itemCode}")
+	void deleteItem(Map<String, Object> param);
 }
