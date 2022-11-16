@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import dto.User;
@@ -21,4 +22,7 @@ public interface UserMapper {
 
 	@Select("update User set password=#{password},name=#{name},tel=#{tel},address=#{address} where email=#{email}")
 	void updateUserProfile(Map<String, Object> param);
+	
+	@Update("update User set point=#{point} where email=#{email}")
+	void updateUserPoint(Map<String, Object> param);
 }

@@ -27,16 +27,13 @@ public class UserEditController {
 	@GetMapping("")
 	public String getUserProfile(Model model, Principal principal) {
 		String email = principal.getName();
-		System.out.println("start getUserProfile Method");
 		User user = userService.getUser(email);
 		model.addAttribute("user",user);
-		System.out.println(user);
 		return "user/userProfile";
 	}
 	@PostMapping("")
 	public String postUserProfile( User user) {
-		System.out.println("start postUserProfile Method");
-		System.out.println(user);
+
 		userService.updateUserProfile(user);
 		return "redirect:/userProfile";
 	}

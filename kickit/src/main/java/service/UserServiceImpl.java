@@ -32,6 +32,11 @@ public class UserServiceImpl implements UserService {
 
 	}
 	
+	@Override
+	public void updateUserPoint(int point, String email) {
+		userDao.updateUserPoint(point, email);
+	}
+	
 	
 
 }
