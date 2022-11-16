@@ -12,7 +12,7 @@ import dto.PurchaseOrder;
 import dto.Review;
 
 @Service
-public class ItemServiceImpl implements ItemService{
+public class ItemServiceImpl implements ItemService {
 	@Autowired
 	private ItemDao itemDao;
 
@@ -27,7 +27,7 @@ public class ItemServiceImpl implements ItemService{
 		// TODO Auto-generated method stub
 		return itemDao.selectItemByCategory(category);
 	}
-	
+
 	@Override
 	public List<Item> getItem(String category, String Order) {
 		// TODO Auto-generated method stub
@@ -59,7 +59,7 @@ public class ItemServiceImpl implements ItemService{
 
 	public void setCart(Cart cart) {
 		// TODO Auto-generated method stub
-	itemDao.setCart(cart);
+		itemDao.setCart(cart);
 	}
 
 	@Override
@@ -74,6 +74,8 @@ public class ItemServiceImpl implements ItemService{
 		itemDao.deleteItemByItemCode(itemCode);
 	}
 
-
+	public void create(Item item) {
+		itemDao.create(item);
+	}
 
 }

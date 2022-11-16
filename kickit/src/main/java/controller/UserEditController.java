@@ -1,5 +1,7 @@
 package controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +25,15 @@ public class UserEditController {
 	UserService userService;
 
 	@GetMapping("")
-	public String getUserProfile(Model model) {
-		String email = "tester@gmail.com";
-		System.out.println("start getUserProfile Method");
+	public String getUserProfile(Model model, Principal principal) {
+		String email = principal.getName();
 		User user = userService.getUser(email);
 		model.addAttribute("user",user);
-		System.out.println(user);
 		return "user/userProfile";
 	}
 	@PostMapping("")
 	public String postUserProfile( User user) {
-		System.out.println("start postUserProfile Method");
-		System.out.println(user);
+
 		userService.updateUserProfile(user);
 		return "redirect:/userProfile";
 	}
