@@ -10,18 +10,16 @@ import org.springframework.stereotype.Repository;
 
 import dao.mapper.ItemMapper;
 
-import dao.mapper.UserMapper;
 import dto.Cart;
 import dto.Item;
 import dto.PurchaseOrder;
 import dto.Review;
-import dto.User;
 
 @Repository
-public class ItemDaoImpl implements ItemDao{
+public class ItemDaoImpl implements ItemDao {
 	@Autowired
 	private SqlSessionTemplate template;
-	private Map<String,Object> param = new HashMap<>();
+	private Map<String, Object> param = new HashMap<>();
 
 	@Override
 	public List<Item> selectItem() {
@@ -31,14 +29,14 @@ public class ItemDaoImpl implements ItemDao{
 	@Override
 	public List<Item> selectItemByCategory(String category) {
 		param.clear();
-		param.put("category",category);
+		param.put("category", category);
 		return template.getMapper(ItemMapper.class).selectByCategory(param);
 	}
 
 	@Override
 	public List<Item> selectItemByOrder(String order) {
 		param.clear();
-		param.put("order",order);
+		param.put("order", order);
 		return template.getMapper(ItemMapper.class).selectByOrder(param);
 	}
 
@@ -47,7 +45,7 @@ public class ItemDaoImpl implements ItemDao{
 		param.clear();
 		param.put("order", order);
 		param.put("category", category);
-		System.out.println("param :"+param);
+		System.out.println("param :" + param);
 		return template.getMapper(ItemMapper.class).selectByCategoryAndOrder(param);
 	}
 
@@ -62,9 +60,9 @@ public class ItemDaoImpl implements ItemDao{
 	public Item getItem(Integer item) {
 		param.clear();
 		param.put("item", item);
-	    return template.getMapper(ItemMapper.class).selectByItem(param);	
+		return template.getMapper(ItemMapper.class).selectByItem(param);
 	}
-	
+
 	@Override
 	public List<Review> getReview(Integer item) {
 		// TODO Auto-generated method stub
@@ -83,5 +81,10 @@ public class ItemDaoImpl implements ItemDao{
 	public void setPurchaseOrder(List<PurchaseOrder> po) {
 		// TODO Auto-generated method stub
 		template.getMapper(ItemMapper.class).setPurchaseOrder(po);
+	}
+
+	@Override
+	public void create(Item item) {
+		template.getMapper(ItemMapper.class).itemInsert(item);
 	}
 }
