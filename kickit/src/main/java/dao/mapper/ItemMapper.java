@@ -5,10 +5,13 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Select;
 
 import dto.Cart;
+import dto.Image;
 import dto.Item;
 import dto.PurchaseOrder;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.springframework.stereotype.Repository;
 
 //import dto.Cart;
@@ -41,5 +44,17 @@ public interface ItemMapper {
 	List<Item> selectByKeyword(Map<String,Object> param);
 	
 	@Insert("insert into PurchaseOrder(itemCode, email, quantity) values(#{itemCode}, #{email}, #{quantity})")
-	List<Item> setPurchaseOrder(List<PurchaseOrder> po);
+	void setPurchaseOrder(PurchaseOrder po);
+	
+	@Delete("delete from Cart where id=#{id}")
+	void deleteItem(int id);
+
+	@Select("select picture1, picture2, picture3, picture4, picture5 from Picture where itemCode = #{itemCode}")	
+	Image selectPicture(int itemCode);
+	
+	@Insert("insert into Item(item, price, content, quantity, category, file_name)values(#{item},#{price},#{content},#{quantity},#{category},#{file_name})")
+	void itemInsert(Item item);
+	
+	@Insert("insert into Picture( picture1, picture2, picture3, picture4, picture5)values(#{picture1},#{picture2},#{picture3},#{picture4},#{picture5})")
+	void insertPicture(Map<String, Object> param);
 }

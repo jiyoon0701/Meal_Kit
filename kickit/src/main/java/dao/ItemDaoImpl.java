@@ -12,16 +12,17 @@ import dao.mapper.ItemMapper;
 
 import dao.mapper.UserMapper;
 import dto.Cart;
+import dto.Image;
 import dto.Item;
 import dto.PurchaseOrder;
 import dto.Review;
 import dto.User;
 
 @Repository
-public class ItemDaoImpl implements ItemDao{
+public class ItemDaoImpl implements ItemDao {
 	@Autowired
 	private SqlSessionTemplate template;
-	private Map<String,Object> param = new HashMap<>();
+	private Map<String, Object> param = new HashMap<>();
 
 	@Override
 	public List<Item> selectItem() {
@@ -31,14 +32,14 @@ public class ItemDaoImpl implements ItemDao{
 	@Override
 	public List<Item> selectItemByCategory(String category) {
 		param.clear();
-		param.put("category",category);
+		param.put("category", category);
 		return template.getMapper(ItemMapper.class).selectByCategory(param);
 	}
 
 	@Override
 	public List<Item> selectItemByOrder(String order) {
 		param.clear();
-		param.put("order",order);
+		param.put("order", order);
 		return template.getMapper(ItemMapper.class).selectByOrder(param);
 	}
 
@@ -47,7 +48,7 @@ public class ItemDaoImpl implements ItemDao{
 		param.clear();
 		param.put("order", order);
 		param.put("category", category);
-		System.out.println("param :"+param);
+		System.out.println("param :" + param);
 		return template.getMapper(ItemMapper.class).selectByCategoryAndOrder(param);
 	}
 
@@ -62,9 +63,9 @@ public class ItemDaoImpl implements ItemDao{
 	public Item getItem(Integer item) {
 		param.clear();
 		param.put("item", item);
-	    return template.getMapper(ItemMapper.class).selectByItem(param);	
+		return template.getMapper(ItemMapper.class).selectByItem(param);
 	}
-	
+
 	@Override
 	public List<Review> getReview(Integer item) {
 		// TODO Auto-generated method stub
@@ -80,8 +81,40 @@ public class ItemDaoImpl implements ItemDao{
 	}
 
 	@Override
-	public void setPurchaseOrder(List<PurchaseOrder> po) {
+	public void setPurchaseOrder(PurchaseOrder po) {
 		// TODO Auto-generated method stub
 		template.getMapper(ItemMapper.class).setPurchaseOrder(po);
 	}
+
+	@Override
+	public void deleteItem(int id) {
+		// TODO Auto-generated method stub
+		template.getMapper(ItemMapper.class).deleteItem(id);
+	}
+
+	@Override
+	public Image selectPicture(int itemCode) {
+		// TODO Auto-generated method stub
+		return template.getMapper(ItemMapper.class).selectPicture(itemCode);
+		
+	}
+	
+	@Override
+	   public void create(Item item) {      
+	        template.getMapper(ItemMapper.class).itemInsert(item);
+	   }
+
+	@Override
+	public void insertPicture(List<String> arr) {
+		// TODO Auto-generated method stub
+		param.clear();
+		param.put("picture1", arr.get(0));
+		param.put("picture2", arr.get(1));
+		param.put("picture3", arr.get(2));
+		param.put("picture4", arr.get(3));
+		param.put("picture5", arr.get(4));
+		
+		template.getMapper(ItemMapper.class).insertPicture(param);
+	}
+
 }

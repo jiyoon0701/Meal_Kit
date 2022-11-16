@@ -7,12 +7,13 @@ import org.springframework.stereotype.Service;
 
 import dao.ItemDao;
 import dto.Cart;
+import dto.Image;
 import dto.Item;
 import dto.PurchaseOrder;
 import dto.Review;
 
 @Service
-public class ItemServiceImpl implements ItemService{
+public class ItemServiceImpl implements ItemService {
 	@Autowired
 	private ItemDao itemDao;
 
@@ -27,7 +28,7 @@ public class ItemServiceImpl implements ItemService{
 		// TODO Auto-generated method stub
 		return itemDao.selectItemByCategory(category);
 	}
-	
+
 	@Override
 	public List<Item> getItem(String category, String Order) {
 		// TODO Auto-generated method stub
@@ -59,15 +60,35 @@ public class ItemServiceImpl implements ItemService{
 
 	public void setCart(Cart cart) {
 		// TODO Auto-generated method stub
-	itemDao.setCart(cart);
+		itemDao.setCart(cart);
 	}
 
 	@Override
-	public void setPurchaseOrder(List<PurchaseOrder> po) {
+	public void setPurchaseOrder(PurchaseOrder po) {
 		// TODO Auto-generated method stub
 		itemDao.setPurchaseOrder(po);
 	}
 
+	@Override
+	public void deleteItem(int id) {
+		// TODO Auto-generated method stub
+		itemDao.deleteItem(id);
+	}
 
+	@Override
+	public Image selectPicture(int itemCode) {
+		// TODO Auto-generated method stub
+		return itemDao.selectPicture(itemCode);
+	}
+	
+	public void create(Item item) {
+	       itemDao.create(item);
+	   }
+
+	@Override
+	public void insertPicture(List<String> arr) {
+		// TODO Auto-generated method stub
+		itemDao.insertPicture(arr);
+	}
 
 }
