@@ -37,6 +37,8 @@ public class UserServiceImpl implements UserService {
 		userDao.updateUserPoint(point, email);
 	}
 	
+
+	
 	
 
 }
