@@ -8,6 +8,7 @@ import dto.Cart;
 import dto.Item;
 import dto.PurchaseOrder;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Repository;
 
@@ -42,4 +43,7 @@ public interface ItemMapper {
 	
 	@Insert("insert into PurchaseOrder(itemCode, email, quantity) values(#{itemCode}, #{email}, #{quantity})")
 	List<Item> setPurchaseOrder(List<PurchaseOrder> po);
+	
+	@Delete("delete from Item where itemCode=#{itemCode}")
+	void deleteItem(Map<String, Object> param);
 }

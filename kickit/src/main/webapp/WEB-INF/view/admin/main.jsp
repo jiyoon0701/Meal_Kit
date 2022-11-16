@@ -33,6 +33,7 @@
 				<th>추천</th>
 				<th>판매량</th>
 				<th>별점</th>
+				<th>삭제</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -46,6 +47,7 @@
 			    	<td><c:out value="${item.recommend }"/></td>
 			    	<td><c:out value="${item.buy }"/></td>
 			    	<td><c:out value="${item.star }"/></td>
+			    	<td><a href="http://localhost:8090/kickit/admin/main/deleteItem?itemCode=${item.itemCode }">삭제</a></td>
 				</tr>
 				</c:forEach>
 			</tbody>

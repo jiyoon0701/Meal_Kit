@@ -11,9 +11,11 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -51,10 +53,16 @@ public class AdminController {
 		return "admin/main";
 	}
 	
+	@GetMapping("main/deleteItem")
+	public String deleteItem(@RequestParam("itemCode") String itemCode) {
+		System.out.println("start deleteItem Method");
+		itemService.deleteItemByItemCode(itemCode);
+		return "redirect:/admin/main";
+	}
+	
 	@GetMapping("accessDenied")
 	public String AccessDenied() {
 		return "admin/accessDenied";
 	}
-	
-	
+
 }
