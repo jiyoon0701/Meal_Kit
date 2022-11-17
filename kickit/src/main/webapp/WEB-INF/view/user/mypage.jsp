@@ -36,6 +36,7 @@
 	<c:otherwise>
 	</c:otherwise>
 </c:choose>
+	
 </head>
 <body>
 	<h1>나는 마이페이지</h1>
@@ -47,7 +48,9 @@
 			<p>전화번호 : ${userinfo.tel }</p>
 			<p>주소 : ${userinfo.address }</p>
 			<p>포인트 : ${userinfo.point }</p>
-			<hr>
+			<button
+				onclick="window.open('http://localhost:8090/kickit/userProfile', 'userProfile', 'width=430, height=500, location=no, status=no, scrollbars=yes');">사용자
+				정보</button>
 		</div>
 	</div>
 	<hr>
@@ -77,10 +80,10 @@
 	</div>
 	<hr>
 	<div class="contiainer">
-
+		<p>구매한 상품 목록</p>
 		<c:forEach var="itemPuchase" items="${itemPuchase}">
 			<div class="form-group">
-				<p>구매한 상품 목록</p>
+				
 				<p>상품이름 : ${itemPuchase.item }</p>
 				<p>구매수량 : ${itemPuchase.quantity }</p>
 				<p>개당 가격 : ${itemPuchase.price }</p>
@@ -88,9 +91,10 @@
 
 				<%-- <img src="${cartList[0].filename }" name="filename"> --%>
 				<hr>
+				<button
+					onclick="window.open('http://localhost:8090/kickit/review?id=${itemPuchase.id}', 'registerReview', 'width=430, height=500, location=no, status=no, scrollbars=yes');">리뷰작성</button>
 			</div>
 		</c:forEach>
-
 	</div>
 
 </body>

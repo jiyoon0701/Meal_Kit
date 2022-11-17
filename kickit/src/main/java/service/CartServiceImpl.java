@@ -18,5 +18,10 @@ public class CartServiceImpl implements CartService {
 		List<CartList> cart = cartDao.getCart(email);
 		return cart;
 	}
+	
+	@Override
+	public void deleteCart(int id, String email) {
+		cartDao.deleteCart(id, email);
+	}
 
 }

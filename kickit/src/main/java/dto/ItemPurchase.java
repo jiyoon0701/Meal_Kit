@@ -1,8 +1,9 @@
 package dto;
 
-import java.util.Date;
+import java.sql.Date;
 
-public class ItemPurchase {
+public class ItemPurchase{
+	private int id;
 	private int itemCode;
 	private String email;
 	private Date date;
@@ -11,6 +12,12 @@ public class ItemPurchase {
 	private int price;
 	private String file_name;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public int getItemCode() {
 		return itemCode;
 	}
@@ -53,6 +60,11 @@ public class ItemPurchase {
 	public void setFile_name(String file_name) {
 		this.file_name = file_name;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "{'itemCode':'" + itemCode + "', 'email':'" + email + "', 'date':'" + date + "', 'quantity':'" + quantity
+				+ "', 'item':'" + item + "', 'price':'" + price + "', 'file_name':'" + file_name + "'}";
+	}
 
 }

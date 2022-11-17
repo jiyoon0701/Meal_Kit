@@ -10,13 +10,11 @@ import org.springframework.stereotype.Repository;
 
 import dao.mapper.ItemMapper;
 
-import dao.mapper.UserMapper;
 import dto.Cart;
 import dto.Image;
 import dto.Item;
 import dto.PurchaseOrder;
 import dto.Review;
-import dto.User;
 
 @Repository
 public class ItemDaoImpl implements ItemDao {
@@ -115,6 +113,13 @@ public class ItemDaoImpl implements ItemDao {
 		param.put("picture5", arr.get(4));
 		
 		template.getMapper(ItemMapper.class).insertPicture(param);
+	}
+
+	public void deleteItemByItemCode(String itemCode) {
+		// TODO Auto-generated method stub
+		param.clear();
+		param.put("itemCode", itemCode);
+		template.getMapper(ItemMapper.class).deleteItem(param);
 	}
 
 }

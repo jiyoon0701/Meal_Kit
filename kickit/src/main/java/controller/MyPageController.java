@@ -9,9 +9,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,7 +34,7 @@ import service.UserService;
 @RequestMapping("mypage")
 public class MyPageController {
 	@Autowired
-	private CartService cartservice;
+	private CartService cartService;
 
 	@Autowired
 	private ItemPurchaseService itemPurchaseService;
@@ -56,6 +59,7 @@ public class MyPageController {
 			totalPrice += CL.getPrice();
 			totalqauntity += CL.getQuantity();
 		}
+		
 		model.addAttribute("totalqauntity", totalqauntity);
 		model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("itemPuchase", itemPuchase);
@@ -65,4 +69,21 @@ public class MyPageController {
 		return "user/mypage";
 	}
 
+	@PostMapping("mypage2")
+	public String postpoint(int point, Principal principal) {
+		String email = principal.getName();
+		userService.updateUserPoint(point,email);
+		System.out.println(point);
+		
+		return "redirect:/mypage/mypage2";
+	}
+	
+	@GetMapping("mypage2/deleteCart")
+	public String deletecart(@RequestParam("id") int id, Principal principal){
+		String email = principal.getName();
+		System.out.println(email);
+		cartService.deleteCart(id, email);
+		return"redirect:/mypage/mypage2";
+	}
+	
 }

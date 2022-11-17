@@ -42,7 +42,6 @@ public class UserDaoImpl implements UserDao{
 		
 		template.getMapper(UserMapper.class).updateUserProfile(param);
 	}
-
 	@Override
 	   public void updateUserPoint(int point, String email) {
 	      param.clear();
@@ -50,4 +49,5 @@ public class UserDaoImpl implements UserDao{
 	      param.put("point", point);
 	      template.getMapper(UserMapper.class).updateUserPoint(param);
 	   }
+
 }

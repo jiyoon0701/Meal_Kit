@@ -13,4 +13,6 @@ public interface ItemPurchaseMapper {
 			+ "inner join Item i on p.itemCode = i.itemCode where p.email=#{email} ")
 	List<ItemPurchase> selectByPurchase(Map<String, Object>param);
 	
+	@Select("select sum(P.quantity * I.price) as price,date from PurchaseOrder as P , Item as I where P.itemCode=I.itemCode group by date order by date")
+	List<ItemPurchase> selectRevenue();
 }

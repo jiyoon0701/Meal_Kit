@@ -70,6 +70,7 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
+
 	public void deleteItem(int id) {
 		// TODO Auto-generated method stub
 		itemDao.deleteItem(id);
@@ -89,6 +90,12 @@ public class ItemServiceImpl implements ItemService {
 	public void insertPicture(List<String> arr) {
 		// TODO Auto-generated method stub
 		itemDao.insertPicture(arr);
+
+	public void deleteItemByItemCode(String itemCode) {
+		// TODO Auto-generated method stub
+		itemDao.deleteItemByItemCode(itemCode);
+	}
+
 	}
 
 }
