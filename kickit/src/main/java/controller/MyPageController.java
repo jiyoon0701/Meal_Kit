@@ -44,6 +44,7 @@ public class MyPageController {
 		String email = principal.getName();
 		int totalqauntity = 0;
 		int totalPrice = 0;
+		
 		User user = userService.getUser(email);
 		List<ItemPurchase> itemPuchase = itemPurchaseService.getItemPurchase(email);
 		List<CartList> cartList = cartService.getCart(email);
@@ -52,6 +53,7 @@ public class MyPageController {
 			totalPrice += CL.getPrice();
 			totalqauntity++;
 		}
+		
 
 		model.addAttribute("totalqauntity", totalqauntity);
 		model.addAttribute("totalPrice", totalPrice);
@@ -66,6 +68,7 @@ public class MyPageController {
 		String email = principal.getName();
 		userService.updateUserPoint(point,email);
 		System.out.println(point);
+		
 		return "redirect:/mypage/mypage2";
 	}
 	

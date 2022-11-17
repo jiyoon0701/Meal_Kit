@@ -50,6 +50,10 @@
 			});
 		});
 
+		$('totalprice').on('price'), function() {
+			var totalprice = $()
+		}
+
 		$('#searchButton').on('click', function() {
 			var keyword = $('input:text[name=keyword]').val();
 			$.ajax({
@@ -97,23 +101,29 @@
 				<p>상품이름 : ${cartList.item }</p>
 				<p>수량 : ${cartList.quantity }</p>
 				<p>가격 : ${cartList.price }</p>
-<%-- 				<form name="deletecart"  action="/kickit/mypage/mypage2" method="get">
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-				<input type="submit" name="deleteCart" value="${cartList.id}">
-				</form> --%>
-				<a href="http://localhost:8090/kickit/mypage/mypage2/deleteCart?id=${cartList.id }">삭제</a>
+				<form name="deletecart" action="/kickit/mypage/mypage2" method="get">
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" /> <input type="submit" name="deleteCart"
+						value="${cartList.id}">
+				</form>
+
+				<a
+					href="http://localhost:8090/kickit/mypage/mypage2/deleteCart?id=${cartList.id }">삭제</a>
 				<%-- <img src="${cartList[0].filename }" name="filename"> --%>
 				<hr>
 			</div>
 		</c:forEach>
 		<p>합계수량 : ${totalqauntity}</p>
 		<p>합계가격 : ${totalPrice}</p>
-		<form name="postPoint"  action="/kickit/mypage/mypage2" method="POST">
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-		<input type="text" name = "point" placeholder="사용할 포인트를 입력하주세요" value="">
-		<p>구매 금액 : ${totalPrice}</p>
-		<input type="submit" value="포인트사용">
-		</form>
+				<form name="postPoint" action="/kickit/mypage/mypage2"
+						method="POST">
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" /> 
+							<input type="text" name="point"
+							placeholder="사용할 포인트를 입력하주세요" value="">
+						<p>구매 금액 : ${totalPrice}</p>
+						<input type="submit" value="포인트사용">
+					</form>
 	</div>
 	<hr>
 	<div class="contiainer">
