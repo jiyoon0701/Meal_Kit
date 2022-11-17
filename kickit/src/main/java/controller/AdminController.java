@@ -92,12 +92,6 @@ public class AdminController {
 	}
 	
 
-	@GetMapping("main")
-	public String getAdmin() {
-
-		return "admin/main";
-	}
-
 	@GetMapping("accessDenied")
 	public String AccessDenied() {
 		return "admin/accessDenied";
