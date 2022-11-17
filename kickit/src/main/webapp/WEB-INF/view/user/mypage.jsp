@@ -48,53 +48,7 @@
 	            }//error
 	         });
 	      });
-
-	      $('#searchButton').on('click', function() {
-	         var keyword = $('input:text[name=keyword]').val();
-	         $.ajax({
-	            url : path + "/main",
-	            type : "get",
-	            headers : {
-	               "cache-control" : "no-cache",
-	               "pragma" : "no-cache"
-	            },
-	            data : {
-	               "keyword" : keyword
-	            },
-	            success : function(data) {
-	               $('body').html(data);
-	            },
-	            error : function(data) {
-	               alert('error');
-	            }//error
-	         });
-	      });
 			
-  		$('#buyButton').click(function(){
-  			var dataList = [];
- 			$('input[name=checkItem]:checked').each( function(index){ 
- 				const itemCode = $(this).val();
- 				var text = $(this).parent().parent().eq(0).text();
- 				text = text.split("수량 : ")[1];
- 				const quantity = text.substring(0,1);
- 				const data = {'itemCode' : itemCode, 'quantity' : quantity};
- 				dataList.push(data);
- 			});
- 			console.log(dataList);
- 			/* $.ajax({
-	            url : path + "/kakao/kakaopay",
-	            type : "get",
-	            data : {
-	               "dataList" : dataList
-	            },
-	            success : function(data) {
-	               $('body').html(data);
-	            },
-	            error : function(data) {
-	               alert('error');
-	            }//error
-	         }); */
-		}); 
 	});
 </script>
 </head>
@@ -123,13 +77,14 @@
 				<p>상품이름 : ${cartList.item }</p>
 				<p>수량 : ${cartList.quantity }</p>
 				<p>가격 : ${cartList.price }</p>
-				<a href="http://localhost:8090/kickit/mypage/mypage2/deleteCart?id=${cartList.id }">삭제</a>
-				<p>체크 <input type="checkbox" name="checkItem" value="${cartList.itemCode}" checked/></p>
-				
+
+				<a href="http://localhost:8090/kickit/mypage/deleteCart?id=${cartList.id }">삭제</a>
+				<%-- <img src="${cartList[0].filename }" name="filename"> --%>
 				<hr>
 				
 			</div>
 		</c:forEach>
+
 		<p id="totalQuantity">합계수량 : </p>
 		<p id="sotalPrice">합계가격 : </p>
 		
@@ -139,7 +94,8 @@
 		<p>구매 금액 : ${totalPrice}</p>
 		<input type="submit" value="포인트사용">
 		</form>
-		<button id="buyButton">구매하기</button>
+		<button id="apibtn">구매하기</button>
+
 	</div>
 	<hr>
 	<div class="contiainer">
