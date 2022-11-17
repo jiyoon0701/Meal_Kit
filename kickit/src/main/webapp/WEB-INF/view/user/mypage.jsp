@@ -23,54 +23,84 @@
 <link href="${path}/resources/css/mainStyles.css" rel="stylesheet" />
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
-
-			var path = "${pageContext.request.contextPath }";
-			// var qustr = "${searchVO.qustr}";
+	var path = "${pageContext.request.contextPath }";
 	
-			$(function(){
-				$('input:button[name=button]').on('click',function(){
-					var category = $(this).val();
-					var order = $('select[name=order]').val();
-					$.ajax({
-						url : path+"/main",
-						type:"get",
-						headers: {"cache-control":"no-cache", "pragma": "no-cache"},
-						data : {
-			                "category":category,    // 버튼의 value값에 따라 작동합니다.
-			                "order":order
-			            },
-			            success : function(data){
-			                $('body').html(data);
-			            },
-			            error : function(data){
-			                alert('error');
-			            }//error
-					});
-				});
-				
-				$('#searchButton').on('click',function(){
-					var keyword = $('input:text[name=keyword]').val();
-					$.ajax({
-						url : path+"/main",
-						type:"get",
-						headers: {"cache-control":"no-cache", "pragma": "no-cache"},
-						data : {
-			                "keyword":keyword
-			            },
-			            success : function(data){
-			                $('body').html(data);
-			            },
-			            error : function(data){
-			                alert('error');
-			            }//error
-					});
-				});
-			});
-		</script>
+	$(function() {
+  		$('input:button[name=button]').on('click', function() {
+	         var category = $(this).val();
+	         var order = $('select[name=order]').val();
+	         $.ajax({
+	            url : path + "/main",
+	            type : "get",
+	            headers : {
+	               "cache-control" : "no-cache",
+	               "pragma" : "no-cache"
+	            },
+	            data : {
+	               "category" : category, // 버튼의 value값에 따라 작동합니다.
+	               "order" : order
+	            },
+	            success : function(data) {
+	               $('body').html(data);
+	            },
+	            error : function(data) {
+	               alert('error');
+	            }//error
+	         });
+	      });
+
+	      $('#searchButton').on('click', function() {
+	         var keyword = $('input:text[name=keyword]').val();
+	         $.ajax({
+	            url : path + "/main",
+	            type : "get",
+	            headers : {
+	               "cache-control" : "no-cache",
+	               "pragma" : "no-cache"
+	            },
+	            data : {
+	               "keyword" : keyword
+	            },
+	            success : function(data) {
+	               $('body').html(data);
+	            },
+	            error : function(data) {
+	               alert('error');
+	            }//error
+	         });
+	      });
+			
+  		$('#buyButton').click(function(){
+  			var dataList = [];
+ 			$('input[name=checkItem]:checked').each( function(index){ 
+ 				const itemCode = $(this).val();
+ 				var text = $(this).parent().parent().eq(0).text();
+ 				text = text.split("수량 : ")[1];
+ 				const quantity = text.substring(0,1);
+ 				const data = {'itemCode' : itemCode, 'quantity' : quantity};
+ 				dataList.push(data);
+ 			});
+ 			console.log(dataList);
+ 			/* $.ajax({
+	            url : path + "/kakao/kakaopay",
+	            type : "get",
+	            data : {
+	               "dataList" : dataList
+	            },
+	            success : function(data) {
+	               $('body').html(data);
+	            },
+	            error : function(data) {
+	               alert('error');
+	            }//error
+	         }); */
+		}); 
+	});
+</script>
 </head>
 <body>
 	<h1>나는 마이페이지</h1>
-	<p>${userinfo.name}님,당신 개인페이지에요</p>
+	<p>${userinfo.name}님,당신개인페이지에요</p>
 	<div class="contiainer">
 		<div class="form-group">
 			<p>이름 : ${userinfo.name }</p>
@@ -78,35 +108,55 @@
 			<p>전화번호 : ${userinfo.tel }</p>
 			<p>주소 : ${userinfo.address }</p>
 			<p>포인트 : ${userinfo.point }</p>
-			<hr>
+			<button
+				onclick="window.open('http://localhost:8090/kickit/userProfile', 'userProfile', 'width=430, height=500, location=no, status=no, scrollbars=yes');">사용자
+				정보</button>
 		</div>
 	</div>
 	<hr>
-		<div class="contiainer">
-		<c:forEach var="cartList" items="${cartList}">
-		<div class="form-group">
+	<div class="contiainer">
 		<p>장바구니 목록</p>
-			<p>상품이름 : ${cartList.item }</p>
-			<p>수량 : ${cartList.quantity }</p>
-			<p>가격 : ${cartList.price }</p>
-			<%-- <img src="${cartList[0].filename }" name="filename"> --%>
 			<hr>
-		</div>
-		</c:forEach>	
+		<c:forEach var="cartList" items="${cartList}">
+			<div class="form-group">
+				
+				<p>상품이름 : ${cartList.item }</p>
+				<p>수량 : ${cartList.quantity }</p>
+				<p>가격 : ${cartList.price }</p>
+				<a href="http://localhost:8090/kickit/mypage/mypage2/deleteCart?id=${cartList.id }">삭제</a>
+				<p>체크 <input type="checkbox" name="checkItem" value="${cartList.itemCode}" checked/></p>
+				
+				<hr>
+				
+			</div>
+		</c:forEach>
+		<p id="totalQuantity">합계수량 : </p>
+		<p id="sotalPrice">합계가격 : </p>
+		
+		<form name="postPoint"  action="/kickit/mypage/mypage2" method="POST">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		<input type="text" name = "point" placeholder="사용할 포인트를 입력하주세요" value="">
+		<p>구매 금액 : ${totalPrice}</p>
+		<input type="submit" value="포인트사용">
+		</form>
+		<button id="buyButton">구매하기</button>
 	</div>
-		<hr>
-		<div class="contiainer">
+	<hr>
+	<div class="contiainer">
+		<p>구매한 상품 목록</p>
 		<c:forEach var="itemPuchase" items="${itemPuchase}">
-		<div class="form-group">
-		<p>구매한 상품 목록	</p>
-			<p>상품이름 : ${itemPuchase.item }</p>
-			<p>구매수량 : ${itemPuchase.quantity }</p>
-			<p>개당 가격 : ${itemPuchase.price }</p>
-			<p>구매날짜 : ${itemPuchase.date }</p>
-			<%-- <img src="${cartList[0].filename }" name="filename"> --%>
-			<hr>
-		</div>
-		</c:forEach>	
+			<div class="form-group">
+				
+				<p>상품이름 : ${itemPuchase.item }</p>
+				<p>구매수량 : ${itemPuchase.quantity }</p>
+				<p>개당 가격 : ${itemPuchase.price }</p>
+				<p>구매날짜 : ${itemPuchase.date }</p>
+				<%-- <img src="${cartList[0].filename }" name="filename"> --%>
+				<hr>
+				<button
+					onclick="window.open('http://localhost:8090/kickit/review?id=${itemPuchase.id}', 'registerReview', 'width=430, height=500, location=no, status=no, scrollbars=yes');">리뷰작성</button>
+			</div>
+		</c:forEach>
 	</div>
 </body>
 </html>

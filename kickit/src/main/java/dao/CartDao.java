@@ -7,5 +7,6 @@ import dto.CartList;
 
 public interface CartDao {
 	public List<CartList> getCart(String email);
+	public void deleteCart(int id, String email);
 
 }

@@ -19,4 +19,5 @@ public interface ItemDao {
 	public List<Item> selectItemByKeyword(String keyword);
 	public void setPurchaseOrder(List<PurchaseOrder> po);
 	public void deleteItemByItemCode(String itemCode);
+	public void create(Item item);
 }

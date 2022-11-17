@@ -19,7 +19,7 @@ import dto.Review;
 public interface ItemMapper {
 	@Select("select * from Item where itemCode=#{item}")
 	Item selectByItem(Map<String, Object> param);
-	
+
 	@Select("select * from Review where itemCode=#{item}")
 	List<Review> getReview(Map<String, Object> param);
 
@@ -28,22 +28,25 @@ public interface ItemMapper {
 
 	@Select("select * from Item ")
 	List<Item> selectAll();
-	
+
 	@Select("select I.itemCode,I.item,I.price,I.category,I.recommend,I.buy,I.star, count(R.id) as rvCount from Item as I left join Review as R on I.itemCode =R.itemCode where category = #{category} group by itemCode")
 	List<Item> selectByCategory(Map<String, Object> param);
-	
+
 	@Select("select I.itemCode,I.item,I.price,I.category,I.recommend,I.buy,I.star, count(R.id) as rvCount from Item as I left join Review as R on I.itemCode =R.itemCode group by itemCode order by ${order}")
 	List<Item> selectByOrder(Map<String, Object> param);
 
 	@Select("select I.itemCode,I.item,I.price,I.category,I.recommend,I.buy,I.star, count(R.id) as rvCount from Item as I left join Review as R on I.itemCode =R.itemCode where category = #{category} group by I.itemCode order by ${order}")
-	List<Item> selectByCategoryAndOrder(Map<String,Object> param);
-	
+	List<Item> selectByCategoryAndOrder(Map<String, Object> param);
+
 	@Select("select * from Item where item like '%${keyword}%'")
-	List<Item> selectByKeyword(Map<String,Object> param);
-	
+	List<Item> selectByKeyword(Map<String, Object> param);
+
 	@Insert("insert into PurchaseOrder(itemCode, email, quantity) values(#{itemCode}, #{email}, #{quantity})")
 	List<Item> setPurchaseOrder(List<PurchaseOrder> po);
 	
 	@Delete("delete from Item where itemCode=#{itemCode}")
 	void deleteItem(Map<String, Object> param);
+
+	@Insert("insert into Item(item, price, content, quantity, category)values(#{item},#{price},#{content},#{quantity},#{category})")
+	void itemInsert(Item item);
 }
