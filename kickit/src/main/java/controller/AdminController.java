@@ -42,7 +42,6 @@ public class AdminController {
 		// 단일
 		
 		List<MultipartFile> detailImgFileList = mtfRequest.getFiles("file");
-		System.out.println(detailImgFileList.get(0).getOriginalFilename()+"asa");
 		 if(detailImgFileList != null) {
 	         String originalFileName = detailImgFileList.get(0).getOriginalFilename();
 	         detailImgFileList.get(0).transferTo(new File(pdfPath +originalFileName ));

@@ -11,7 +11,7 @@
 		<div id="wriTitle">
 			<b>밀키트 등록</b>
 		</div>
-		<form name="fileForm" action="create" method="POST" enctype="multipart/form-data">
+		<form name="fileForm" action="create" method="POST" enctype="multipart/form-data" accept-charset="utf-8">
 			<table>
 				<tr>
 					<td width="100px">카테고리</td>

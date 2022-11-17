@@ -51,7 +51,7 @@ public class MyPageController {
 		User user = userService.getUser(email);
 		List<ItemPurchase> itemPuchase = itemPurchaseService.getItemPurchase(email);
 		List<CartList> cartList = cartservice.getCart(email);
-		System.out.print(cartList);
+		
 		for (CartList CL : cartList) {
 			totalPrice += CL.getPrice();
 			totalqauntity += CL.getQuantity();

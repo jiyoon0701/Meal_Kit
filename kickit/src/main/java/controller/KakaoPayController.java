@@ -53,7 +53,7 @@ public class KakaoPayController {
 			String item = cartList.get(0).getItem(); // 첫번째 상품의 이름
 			
 			point = Integer.parseInt(points);
-			int totalprice = Integer.parseInt(totalPrice) - point;
+			int totalprice = (Integer.parseInt(totalPrice)*totalQuantity) - point;
 			System.out.println(totalprice);
 			item = URLEncoder.encode(item + " 외 " + (totalQuantity - 1) + "건", "UTF-8");
 
