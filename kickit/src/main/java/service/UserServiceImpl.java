@@ -10,10 +10,9 @@ import dto.User;
 @Service
 public class UserServiceImpl implements UserService {
 
-
 	@Autowired
 	private UserDao userDao;
-	
+
 	@Override
 	public void userInsert(User user) {
 		userDao.insert(user);
@@ -31,18 +30,10 @@ public class UserServiceImpl implements UserService {
 		userDao.updateUserProfile(user);
 
 	}
-	@Override
-	   public void updateUserPoint(int point, String email) {
-	      userDao.updateUserPoint(point, email);
-	   }
-	
+
 	@Override
 	public void updateUserPoint(int point, String email) {
 		userDao.updateUserPoint(point, email);
 	}
-	
-
-	
-	
 
 }

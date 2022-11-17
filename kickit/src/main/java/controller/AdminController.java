@@ -11,6 +11,7 @@ import org.json.simple.JSONObject;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -120,13 +121,6 @@ public class AdminController {
 		System.out.println("start deleteItem Method");
 		itemService.deleteItemByItemCode(itemCode);
 		return "redirect:/admin/main";
-	}
-
-
-	// 상품 등록 페이지 이동
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public String getcreate() throws Exception {
-		return "admin/create";
 	}
 
 	@GetMapping("accessDenied")
