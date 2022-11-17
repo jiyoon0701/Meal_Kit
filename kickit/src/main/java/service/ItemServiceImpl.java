@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import dao.ItemDao;
 import dto.Cart;
+import dto.Image;
 import dto.Item;
 import dto.PurchaseOrder;
 import dto.Review;
@@ -63,19 +64,38 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public void setPurchaseOrder(List<PurchaseOrder> po) {
+	public void setPurchaseOrder(PurchaseOrder po) {
 		// TODO Auto-generated method stub
 		itemDao.setPurchaseOrder(po);
 	}
 
 	@Override
+
+	public void deleteItem(int id) {
+		// TODO Auto-generated method stub
+		itemDao.deleteItem(id);
+	}
+
+	@Override
+	public Image selectPicture(int itemCode) {
+		// TODO Auto-generated method stub
+		return itemDao.selectPicture(itemCode);
+	}
+	
+	public void create(Item item) {
+	       itemDao.create(item);
+	   }
+
+	@Override
+	public void insertPicture(List<String> arr) {
+		// TODO Auto-generated method stub
+		itemDao.insertPicture(arr);
+
 	public void deleteItemByItemCode(String itemCode) {
 		// TODO Auto-generated method stub
 		itemDao.deleteItemByItemCode(itemCode);
 	}
 
-	public void create(Item item) {
-		itemDao.create(item);
 	}
 
 }

@@ -42,12 +42,12 @@ public class UserDaoImpl implements UserDao{
 		
 		template.getMapper(UserMapper.class).updateUserProfile(param);
 	}
-	
 	@Override
-	public void updateUserPoint(int point, String email) {
-		param.clear();
-		param.put("email", email);
-		param.put("point", point);
-		template.getMapper(UserMapper.class).updateUserPoint(param);
-	}
+	   public void updateUserPoint(int point, String email) {
+	      param.clear();
+	      param.put("email", email);
+	      param.put("point", point);
+	      template.getMapper(UserMapper.class).updateUserPoint(param);
+	   }
+
 }

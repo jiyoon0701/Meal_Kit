@@ -13,6 +13,7 @@
 <meta name="author" content="" />
 <title>Shop Homepage - Start Bootstrap Template</title>
 <c:set var="path" value="${pageContext.request.contextPath}" />
+
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -21,36 +22,21 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="${path}/resources/css/mainStyles.css" rel="stylesheet" />
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript">
-	var path = "${pageContext.request.contextPath }";
+
+<c:choose>
+	<c:when test="${success eq 'true'}">
+		<script>alert("결제 성공");</script>
+	</c:when>
+	<c:when test="${success eq 'false'}">
+		<script>alert("결제 실패");</script>
+	</c:when>
+	<c:when test="${success eq 'cancle'}">
+		<script>alert("결제 취소");</script>
+	</c:when>
+	<c:otherwise>
+	</c:otherwise>
+</c:choose>
 	
-	$(function() {
-  		$('input:button[name=button]').on('click', function() {
-	         var category = $(this).val();
-	         var order = $('select[name=order]').val();
-	         $.ajax({
-	            url : path + "/main",
-	            type : "get",
-	            headers : {
-	               "cache-control" : "no-cache",
-	               "pragma" : "no-cache"
-	            },
-	            data : {
-	               "category" : category, // 버튼의 value값에 따라 작동합니다.
-	               "order" : order
-	            },
-	            success : function(data) {
-	               $('body').html(data);
-	            },
-	            error : function(data) {
-	               alert('error');
-	            }//error
-	         });
-	      });
-			
-	});
-</script>
 </head>
 <body>
 	<h1>나는 마이페이지</h1>
@@ -69,32 +55,27 @@
 	</div>
 	<hr>
 	<div class="contiainer">
-		<p>장바구니 목록</p>
-			<hr>
 		<c:forEach var="cartList" items="${cartList}">
 			<div class="form-group">
-				
+				<p>장바구니 목록</p>
 				<p>상품이름 : ${cartList.item }</p>
 				<p>수량 : ${cartList.quantity }</p>
 				<p>가격 : ${cartList.price }</p>
+				<a
+					href="http://localhost:8090/kickit/mypage/deleteCart?id=${cartList.id }">삭제</a>
+				<p>
+					체크 <input type="checkbox" name="checkItem"
+						value="${cartList.itemCode}" checked />
+				</p>
 
-				<a href="http://localhost:8090/kickit/mypage/deleteCart?id=${cartList.id }">삭제</a>
 				<%-- <img src="${cartList[0].filename }" name="filename"> --%>
 				<hr>
-				
 			</div>
 		</c:forEach>
-
-		<p id="totalQuantity">합계수량 : </p>
-		<p id="sotalPrice">합계가격 : </p>
-		
-		<form name="postPoint"  action="/kickit/mypage/mypage2" method="POST">
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-		<input type="text" name = "point" placeholder="사용할 포인트를 입력하주세요" value="">
-		<p>구매 금액 : ${totalPrice}</p>
-		<input type="submit" value="포인트사용">
-		</form>
-		<button id="apibtn">구매하기</button>
+		<p>합계수량 : ${totalqauntity}</p>
+		<p>합계가격 : ${totalPrice}</p>
+		<input type="text" name="point" id="point"> <input
+			type="button" id="apibtn">구매하기
 
 	</div>
 	<hr>
@@ -107,6 +88,7 @@
 				<p>구매수량 : ${itemPuchase.quantity }</p>
 				<p>개당 가격 : ${itemPuchase.price }</p>
 				<p>구매날짜 : ${itemPuchase.date }</p>
+
 				<%-- <img src="${cartList[0].filename }" name="filename"> --%>
 				<hr>
 				<button
@@ -114,5 +96,31 @@
 			</div>
 		</c:forEach>
 	</div>
+
 </body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">	
+
+	$(document).on("click", "#apibtn", function(){
+		const point = $("#point").val();
+		if(point > ${userinfo.point }){
+			alert("보유 포인트가 부족합니다.");
+		}else{
+		$.ajax({
+			type : 'get',
+			url:'/kickit/kakao/kakaopay',
+			dataType: "json",
+			data :{
+				totalPrice : ${totalPrice},
+				points : point
+			},
+			success : function(data){
+				window.open(data.next_redirect_pc_url);
+			},
+			error : function(error){
+				alert(error);
+			}
+	})}
+		});
+</script>
 </html>

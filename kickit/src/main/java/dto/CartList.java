@@ -7,9 +7,7 @@ public class CartList {
 	private int quantity;
 	private String item;
 	private int price;
-	private String content;
 	private String file_name;
-	private String catogory;
 	
 	public int getId() {
 		return id;
@@ -47,29 +45,18 @@ public class CartList {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
+
 	public String getFile_name() {
 		return file_name;
 	}
 	public void setFile_name(String file_name) {
 		this.file_name = file_name;
 	}
-	public String getCatogory() {
-		return catogory;
-	}
-	public void setCatogory(String catogory) {
-		this.catogory = catogory;
-	}
 	@Override
 	public String toString() {
 		return "CartList [id=" + id + ", itemCode=" + itemCode + ", email=" + email + ", quantity=" + quantity
-				+ ", item=" + item + ", price=" + price + ", content=" + content + ", file_name=" + file_name
-				+ ", catogory=" + catogory + "]";
+				+ ", item=" + item + ", price=" + price + " , file_name=" + file_name
+				;
 	}
 
 	

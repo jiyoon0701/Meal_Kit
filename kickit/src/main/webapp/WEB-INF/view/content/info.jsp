@@ -2,14 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 
 <html lang="en">
 <head>
-  <%-- <sec:csrfMetaTags /> 또는 --%>
-    <meta name="_csrf_header" content="${_csrf.headerName}" />
-    <meta name="_csrf" content="${_csrf.token}" />
+<%-- <sec:csrfMetaTags /> 또는 --%>
+<meta name="_csrf_header" content="${_csrf.headerName}" />
+<meta name="_csrf" content="${_csrf.token}" />
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -86,30 +87,41 @@
 					</div>
 					<h1 class="display-5 fw-bolder">${items.item}</h1>
 					<div class="fs-5 mb-5">
-						<span>${items.price}</span>
+						<span>가격 : ${items.price}</span>
 					</div>
-					<p class="lead">간략하게 한 줄 소개 ..?</p>
+					<div class="fs-5 mb-5">
+						<span>남은 수량 : ${items.quantity}</span>
+					</div>
+					<!-- 	<h1 class="lead">간략하게 한 줄 소개 ..?</h1> -->
 					<div class="d-flex">
-						<form name="cartForm" action="cart" method="POST">
+						<%-- <form name="cartForm" action="cart" method="POST"> --%>
 
-							<input class="form-control text-center me-3" id="quantity"
-								name="quantity" type="num" value="1" style="max-width: 3rem" />
-							<input type="hidden" value="${items.itemCode}" name="itemCode"
-								id="itemCode" /> <input type="hidden"
-								name="${_csrf.parameterName}" value="${_csrf.token}" />
-							<button class="btn btn-outline-dark flex-shrink-0">
-								<i class="bi-cart-fill me-1"></i> 장바구니 담기
-							</button>
-						</form>
-					
+						<input class="form-control text-center me-3" id="quantity"
+							name="quantity" type="num" value="1" style="max-width: 3rem" />
+						<input type="hidden" value="${items.itemCode}" name="itemCode"
+							id="itemCode" /> <input type="hidden"
+							name="${_csrf.parameterName}" value="${_csrf.token}" />
+						<button class="btn btn-outline-dark flex-shrink-0"
+							id="purchaseBtn">
+							<i class="bi-cart-fill me-1"></i> 장바구니 담기
+						</button>
+						<%-- 	</form> --%>
+
 					</div>
 
 				</div>
 			</div>
 			<div>
-				<p style="margin-top: 100px;">${items.content}</p>
+				<h1 style="margin-top: 100px;">${items.content}</h1>
+				<c:forEach var="picture" items="${pictures}">
+					<div class="form-group">
+						<c:if test="${picture != 'null'}">
+							<img src="${path}/resources/img/${picture}" name="filename">
+							<br><br><br><br>
+						</c:if>
+					</div>
+				</c:forEach>
 			</div>
-		</div>
 		</div>
 	</section>
 
@@ -145,7 +157,7 @@
 			<p class="m-0 text-center text-white">Copyright &copy; Your
 				Website 2022</p>
 		</div>
-			<input type = "button" id = "apibtn" class="aa">구매하기
+
 	</footer>
 	<!-- Bootstrap core JS-->
 	<script
@@ -153,33 +165,42 @@
 	<!-- Core theme JS-->
 	<script src="${path}/resources/js/itemInfo.js" rel="stylesheet"></script>
 
-<script src="http://code.jquery.com/jquery-latest.js"></script> 
-<script type="text/javascript">	
 
-const header = $("meta[name='_csrf_header']").attr("content");
-const token = $("meta[name='_csrf']").attr("content");
-
-	$(document).on("click", "#apibtn", function(){
-		$.ajax({
-			type : 'POST',
-			url:'/kickit/kakao/kakaopay',
-			dataType:'json',
-			data : {
-				po : [{itemCode:"2"}],
-				item : "바나나",
-				totalQuantity : "4",
-				totalPrice : "10000" 
-		},
-			success : function(data){
-				window.open(data.next_redirect_pc_url);
-			},
-			error : function(error){
-				alert(error);
-			},beforeSend: function(xhr){
-				xhr.setRequestHeader(header, token);	// 헤드의 csrf meta태그를 읽어 CSRF 토큰 함께 전송
-			}
-	})
-		});
-</script>
 </body>
+ <meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
+ <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">	
+$(document).ready(function (){
+	var token = $("meta[name='_csrf']").attr("content");
+	 var header = $("meta[name='_csrf_header']").attr("content");
+	 $("#purchaseBtn").click(function(){
+		const quantity = $("#quantity").val();
+		const totalQuantity = ${items.quantity};
+		if (quantity > totalQuantity) {
+			alert("수량 초과");
+		}else { 			
+			$.ajax({
+				type : 'POST',
+				url:'/kickit/content/cart',
+				dataType: "json",
+				data :{
+					Quantity : quantity,
+					itemCode : ${items.itemCode}
+				},
+				success : function(data){
+					// 흐음..
+				},
+				error : function(error){
+					if (error.status == 200){
+						alert("장바구니 담기 완료");
+					}
+				},beforeSend : function(xhr){
+					xhr.setRequestHeader(header, token);
+				}
+			}) 
+		}
+			});
+});
+</script>
 </html>

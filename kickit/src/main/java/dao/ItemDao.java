@@ -3,9 +3,9 @@ package dao;
 import java.util.List;
 
 import dto.Cart;
+import dto.Image;
 import dto.Item;
 import dto.PurchaseOrder;
-//import dto.Cart;
 import dto.Review;
 
 public interface ItemDao {
@@ -17,7 +17,12 @@ public interface ItemDao {
 	public List<Item> selectItemByOrder(String order);
 	public List<Item> selectItemByCategoryAndOrder(String category, String order);
 	public List<Item> selectItemByKeyword(String keyword);
-	public void setPurchaseOrder(List<PurchaseOrder> po);
-	public void deleteItemByItemCode(String itemCode);
+
+	public void setPurchaseOrder(PurchaseOrder po);
+	public void deleteItem(int id);
+	public Image selectPicture(int itemCode);
 	public void create(Item item);
+	public void insertPicture(List<String> arr);
+	public void deleteItemByItemCode(String itemCode);
+
 }
