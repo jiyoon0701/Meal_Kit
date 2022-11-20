@@ -148,7 +148,7 @@
 			<input type = "button" id = "apibtn" class="aa">구매하기
 	</footer>
 	<!-- Bootstrap core JS-->
-	<script
+	<script 
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="${path}/resources/js/itemInfo.js" rel="stylesheet"></script>
@@ -170,7 +170,7 @@ const token = $("meta[name='_csrf']").attr("content");
 				totalQuantity : "4",
 				totalPrice : "10000" 
 		},
-			success : function(data){
+			success : function(data){ 
 				window.open(data.next_redirect_pc_url);
 			},
 			error : function(error){

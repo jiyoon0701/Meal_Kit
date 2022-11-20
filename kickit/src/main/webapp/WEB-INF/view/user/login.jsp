@@ -87,11 +87,11 @@
               </div>
               <div class="input-box">
                 <i class="fas fa-phone"></i>
-                <input type="password" placeholder="Enter your Phone Number" id = "tel" name = "tel" required>
+                <input type="text" placeholder="Enter your Phone Number" id = "tel" name = "tel" required>
               </div>
               <div class="input-box">
-                <i class="fas fa-house-chimney"></i>
-                <input type="password" placeholder="Enter your address" id = "address" name = "address" required>
+                <i class="fa-solid fa-house-window"></i>
+                <input type="text" placeholder="Enter your address" id = "address" name = "address" required>
               </div>
               <input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" />

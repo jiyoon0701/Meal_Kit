@@ -12,12 +12,11 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
-	<div class="popup">
-		<div class="popup_content">
+	<div >
+		<div >
 
-			<div class="popup-header">
-				<h2 class="popup-title" class="title">Your Information</h2>
-				<hr class="lineshort">
+			<div >
+				<h2 class="title">Your Information</h2>
 			</div>
 			<hr class="line">
 
