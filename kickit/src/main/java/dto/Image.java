@@ -1,5 +1,6 @@
 package dto;
 
+
 public class Image {
 	private int ItemCode;
 	private String picture1;
@@ -44,4 +45,6 @@ public class Image {
 	public void setPicture5(String picture5) {
 		this.picture5 = picture5;
 	}
+
 }
+
