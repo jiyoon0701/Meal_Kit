@@ -36,11 +36,12 @@ public class AdminController {
 	@Autowired
 	private ItemService service;
 
-	// 상품 등록 페이지 이동
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public String getcreate() throws Exception {
-		return "board/create";
-	}
+	/*
+	 * // 상품 등록 페이지 이동
+	 * 
+	 * @RequestMapping(value = "/create", method = RequestMethod.GET) public String
+	 * getcreate() throws Exception { return "board/create"; }
+	 */
 
 	// 게시물 작성 post
 	@PostMapping("/create")
