@@ -45,7 +45,6 @@ public interface ItemMapper {
 
 	@Insert("insert into PurchaseOrder(itemCode, email, quantity) values(#{itemCode}, #{email}, #{quantity})")
 	void setPurchaseOrder(PurchaseOrder po);
-	
 
 	@Select("select picture1, picture2, picture3, picture4, picture5 from Picture where itemCode = #{itemCode}")	
 	Image selectPicture(int itemCode);
@@ -55,8 +54,6 @@ public interface ItemMapper {
 	
 	@Insert("insert into Picture( picture1, picture2, picture3, picture4, picture5)values(#{picture1},#{picture2},#{picture3},#{picture4},#{picture5})")
 	void insertPicture(Map<String, Object> param);
-
-	List<Item> setPurchaseOrder(List<PurchaseOrder> po);
 	
 	@Delete("delete from Item where itemCode=#{itemCode}")
 	void deleteItem(Map<String, Object> param);

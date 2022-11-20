@@ -124,13 +124,6 @@ public class AdminController {
 		return "redirect:/admin/main";
 	}
 
-
-	// 상품 등록 페이지 이동
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public String getcreate() throws Exception {
-		return "admin/create";
-	}
-
 	@GetMapping("accessDenied")
 	public String AccessDenied() {
 		return "admin/accessDenied";

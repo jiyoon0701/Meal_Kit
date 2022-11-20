@@ -89,6 +89,7 @@ public class ItemDaoImpl implements ItemDao {
 		// TODO Auto-generated method stub
 		template.getMapper(ItemMapper.class).deleteCart(id);
 	}
+	
 
 	@Override
 	public Image selectPicture(int itemCode) {

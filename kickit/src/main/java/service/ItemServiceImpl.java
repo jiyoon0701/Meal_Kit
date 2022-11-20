@@ -81,16 +81,15 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		return itemDao.selectPicture(itemCode);
 	}
-	
+
 	public void create(Item item) {
-	       itemDao.create(item);
-	   }
+		itemDao.create(item);
+	}
 
 	@Override
 	public void insertPicture(List<String> arr) {
 		// TODO Auto-generated method stub
 		itemDao.insertPicture(arr);
-
 	}
 
 	@Override
@@ -98,5 +97,4 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		itemDao.deleteItemByItemCode(itemCode);
 	}
-
 }

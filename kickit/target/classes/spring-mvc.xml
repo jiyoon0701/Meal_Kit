@@ -30,7 +30,6 @@
 <aop:aspectj-autoproxy />
 
 
-
 <!-- 뷰결정자 : jsp 페이지의 위치 지정  -->
 <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
   <property name="viewClass">
