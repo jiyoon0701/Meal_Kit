@@ -73,8 +73,8 @@
 
 			</div>
 			<div class="mb-3">
-				<label for="title">썸네일 사진</label> <input type="file"
-					name="uploadFile" class="form-control" required id="uploadFile" />
+				<label for="title">썸네일 사진</label> <input type="file" multiple="multiple"
+					name="file" class="form-control" required id="file" />
 			</div>
 			<div class="mb-3">
 				<label for="title">본문 사진</label> <input multiple="multiple"

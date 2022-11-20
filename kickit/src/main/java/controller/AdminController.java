@@ -62,15 +62,18 @@ import service.ItemService;
 public class AdminController {
 	@Autowired
 	private ItemService itemService;
+	
+	@Autowired
+	ItemPurchaseService itemPurchaseService;
+	
 
 	// 상품 등록 페이지 이동
 	  
 	  @RequestMapping(value = "/create", method = RequestMethod.GET) public String
-	  getcreate() throws Exception { return "board/create"; }
+	  getcreate() throws Exception { return "admin/create"; }
 
 	
-	@Autowired
-	ItemPurchaseService itemPurchaseService;
+
 	@GetMapping("main")
 	public String getAdmin(Model model) {
 		System.out.println("start getAdmin Method");
@@ -147,12 +150,6 @@ public class AdminController {
 			return "redirect:/admin/create";
 		}
 
-	@GetMapping("main")
-	public String getAdmin() {
-
-		return "admin/main";
-
-	}
 
 	@GetMapping("accessDenied")
 	public String AccessDenied() {
