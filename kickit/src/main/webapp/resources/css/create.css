@@ -1,0 +1,28 @@
+.header{
+	position: absolute;
+width: 1440px;
+height: 100px;
+margin : 0 auto;
+left: 0px;
+top: 0px;
+
+background: #FFFFFF;
+}
+
+.header-text{
+position: absolute;
+width: 178px;
+height: 38px;
+left: 120px;
+top: 31px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 32px;
+line-height: 38px;
+/* identical to box height */
+
+
+color: #FF8F52;
+}

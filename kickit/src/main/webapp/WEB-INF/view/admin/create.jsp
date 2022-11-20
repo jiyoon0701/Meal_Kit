@@ -1,25 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
+<c:set var="path" value="${pageContext.request.contextPath}" />
+<link href="${path}/resources/css/create.css" rel="stylesheet">
 <head>
 <meta charset="UTF-8">
 <title>상품 등록</title>
 </head>
 <body>
-	<div class="controller">
-		<div id="wriTitle">
-			<b>밀키트 등록</b>
-		</div>
+<!-- 	<div class="header">
+		<header>
+			<h3 class="header-text">KIC-KIT</h3>
+		</header>
+	</div> -->
+	<div>
 		<form action="create" enctype="multipart/form-data" method="post">
 			<table>
 				<tr>
 					<td width="100px">카테고리</td>
 					<td><select name="category" id="category">
 							<option>한식</option>
-							<option>중식</option>
+							<option>중식-일식</option>
+							<option>베트남식</option>
+							<option>양식</option>
 							<option>일식</option>
-							<option>건강식</option>
+							<option>건강한 식사</option>
+							<option>기타</option>
 					</select></td>
 				</tr>
 				<tr>
