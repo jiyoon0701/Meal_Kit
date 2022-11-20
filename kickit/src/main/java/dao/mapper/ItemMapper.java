@@ -60,4 +60,7 @@ public interface ItemMapper {
 	
 	@Delete("delete from Item where itemCode=#{itemCode}")
 	void deleteItem(Map<String, Object> param);
+	
+	@Delete("delete from Cart where id=#{id}")
+	void deleteCart(int id);
 }

@@ -36,10 +36,6 @@ public class UserServiceImpl implements UserService {
 	      userDao.updateUserPoint(point, email);
 	   }
 	
-	@Override
-	public void updateUserPoint(int point, String email) {
-		userDao.updateUserPoint(point, email);
-	}
 	
 
 	

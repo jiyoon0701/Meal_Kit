@@ -87,7 +87,7 @@ public class ItemDaoImpl implements ItemDao {
 	@Override
 	public void deleteItem(int id) {
 		// TODO Auto-generated method stub
-		template.getMapper(ItemMapper.class).deleteItem(id);
+		template.getMapper(ItemMapper.class).deleteCart(id);
 	}
 
 	@Override

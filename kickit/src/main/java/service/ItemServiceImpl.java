@@ -91,11 +91,12 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		itemDao.insertPicture(arr);
 
+	}
+
+	@Override
 	public void deleteItemByItemCode(String itemCode) {
 		// TODO Auto-generated method stub
 		itemDao.deleteItemByItemCode(itemCode);
-	}
-
 	}
 
 }

@@ -6,8 +6,23 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="UTF-8">
 <head>
+<style>
+.box {
+	width: 150px;
+	height: 150px;
+	border-radius: 70%;
+	overflow: hidden;
+}
+
+.profile {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+</style>
 <%-- <sec:csrfMetaTags /> 또는 --%>
 <meta name="_csrf_header" content="${_csrf.headerName}" />
 <meta name="_csrf" content="${_csrf.token}" />
@@ -31,14 +46,12 @@
 
 </head>
 <body>
-	<h2>사용자 로그인</h2>
-	<div id="apibtn">카카오페이</div>
 </head>
 <body>
 	<c:set var="path" value="${pageContext.request.contextPath}" />
 	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container px-4 px-lg-5">
+	<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+	<%-- <div class="container px-4 px-lg-5">
 			<a class="navbar-brand" href="#!">Start Bootstrap</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -68,7 +81,7 @@
 					</button>
 				</form>
 			</div>
-		</div>
+		</div> --%>
 	</nav>
 
 	<!-- Product section-->
@@ -80,14 +93,11 @@
 						src="${path}/resources/img/${items.file_name}" alt="..." />
 				</div>
 				<div class="col-md-6">
-					<div>
-						<img src="${path}/resources/img/star.png" style="float: left"
-							width="100px" />
-						<h2>5/5</h2>
-					</div>
-					<h1 class="display-5 fw-bolder">${items.item}</h1>
+					
+					
 					<div class="fs-5 mb-5">
-						<span>가격 : ${items.price}</span>
+					<h1 class="display-5 fw-bolder">${items.item}</h1>
+					<h1>가격 : ${items.price}</h1>
 					</div>
 					<div class="fs-5 mb-5">
 						<span>남은 수량 : ${items.quantity}</span>
@@ -105,19 +115,30 @@
 							id="purchaseBtn">
 							<i class="bi-cart-fill me-1"></i> 장바구니 담기
 						</button>
+					
 						<%-- 	</form> --%>
 
 					</div>
+					&nbsp;
+						<div>
+						<p style = "float:left">  고객 리뷰 : </p> <img src="${path}/resources/img/star2.png" style="float: left"
+							width="150px" />  4.5  <!-- &nbsp; <h3>5/5</h3>  -->
+					</div>
 
 				</div>
+
 			</div>
+			<hr>
 			<div>
-				<h1 style="margin-top: 100px;">${items.content}</h1>
+				<h1 style="margin-top: 40px;">${items.content}</h1>
 				<c:forEach var="picture" items="${pictures}">
 					<div class="form-group">
 						<c:if test="${picture != 'null'}">
 							<img src="${path}/resources/img/${picture}" name="filename">
-							<br><br><br><br>
+							<br>
+							<br>
+							<br>
+							<br>
 						</c:if>
 					</div>
 				</c:forEach>
@@ -131,23 +152,34 @@
 		<div class="card bg-light">
 
 			<div class="card-body">
+				
 				<h2 style="padding-bottom: 20px;">후기</h2>
+				
 				<c:forEach var="review" items="${Review}" varStatus="status">
 
 					<div class="d-flex mb-4">
-						<!-- Parent comment-->
-						<div class="flex-shrink-0">
-							<img class="rounded-circle"
-								src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."
-								width="240px" />
+						<div class="box" style="background: #BDBDBD;">
+							<img class="profile" src="${path}/resources/img/person.png"
+								alt="..." />
 						</div>
+						<!-- Parent comment-->
+
 						<div class="ms-3">
-							<div class="fw-bold">${review.id}</div>
-							<img style="" src="${path}/resources/img/star.png" width="100px" />
+							<img style="" src="${path}/resources/img/star2.png" width="150px" class = "star"/>
+							<div class="fw-bold"><h4>${review.title}</h4></div>
+
 							<p>${review.content }</p>
+							<br>
+
+							<div class="flex-shrink-0">
+								<img class="rounded-circle"
+									src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."
+									width="240px" />
+							</div>
 						</div>
 
 					</div>
+					<hr>
 				</c:forEach>
 			</div>
 		</div>
@@ -167,8 +199,9 @@
 
 
 </body>
- <meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
- <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
+<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+<meta id="_csrf_header" name="_csrf_header"
+	content="${_csrf.headerName}" />
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">	
 $(document).ready(function (){
