@@ -73,21 +73,21 @@ public class MyPageController {
 		return "user/mypage";
 	}
 
-	@PostMapping("mypage2")
+	@PostMapping("mypage")
 	public String postpoint(int point, Principal principal) {
 		String email = principal.getName();
 		userService.updateUserPoint(point,email);
 		System.out.println(point);
 		
-		return "redirect:/mypage/mypage2";
+		return "redirect:/mypage/mypage";
 	}
 	
-	@GetMapping("mypage2/deleteCart")
+	@GetMapping("deleteCart")
 	public String deletecart(@RequestParam("id") int id, Principal principal){
 		String email = principal.getName();
 		System.out.println(email);
 		cartService.deleteCart(id, email);
-		return"redirect:/mypage/mypage2";
+		return"redirect:/mypage";
 	}
 	
 }
