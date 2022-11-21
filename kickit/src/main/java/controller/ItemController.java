@@ -29,6 +29,7 @@ public class ItemController {
 		ModelAndView mav = new ModelAndView();
 		ArrayList<String> pictures = new ArrayList<>();
 		Item items = service.getItem(item);
+		System.out.println(items);
 		List<Review> review = service.getReview(item);
 		// 이미지 객체 가져오기
 		Image picture = service.selectPicture(item);

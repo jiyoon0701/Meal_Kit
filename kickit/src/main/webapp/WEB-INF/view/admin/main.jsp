@@ -76,19 +76,19 @@
 		<br>
 		<br>
 		<br>
-		<h5><b>상품</b></h5>
-		<a class="btn btn-outline-secondary mt-auto" href="http://localhost:8090/kickit/admin/create" style="float:right;">상품추가</a>
+		<h3><b>등록된 상품리스트</b></h3>
+		<a class="btn btn-outline-secondary mt-auto" href="http://localhost:8090/kickit/admin/create" style="float:right; margin-bottom:20px;">상품추가</a>
 		
-		<div style="overflow:auto; width:1500px; height:400px;">
+		<div style="overflow:auto; width:1500px; height:400px; margin-bottom:40px;">
 			<table style = "border= 1; width:1200px;">
 				<thead>
 				<tr>
 					<th>상품</th>
 					<th>가격</th>
-					<th>이미지</th>
+
 					<th>수량</th>
 					<th>카테고리</th>
-					<th>추천</th>
+
 					<th>판매량</th>
 					<th>별점</th>
 					<th>삭제</th>
@@ -99,10 +99,10 @@
 					<tr>
 						<td><c:out value="${item.item }"/></td>
 				  		<td><c:out value="${item.price }"/></td>
-				   		<td><c:out value="${item.file_name }"/></td>
+
 				    	<td><c:out value="${item.quantity }"/></td>
 				    	<td><c:out value="${item.category }"/></td>
-				    	<td><c:out value="${item.recommend }"/></td>
+
 				    	<td><c:out value="${item.buy }"/></td>
 				    	<td><c:out value="${item.star }"/></td>
 				    	<td><a href="http://localhost:8090/kickit/admin/main/deleteItem?itemCode=${item.itemCode }" class = "btn btn-dark">삭제</a></td>

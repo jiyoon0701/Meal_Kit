@@ -20,7 +20,7 @@ import dto.Review;
 
 @Repository
 public interface ItemMapper {
-	@Select("select * from Item where itemCode=#{item}")
+	@Select("select I.itemCode, I.item, I.price, I.file_name, I.quantity, I.category, (select sum(quantity) from PurchaseOrder where itemCode=I.itemCode) as buy , (select avg(star) from Review where itemCode = I.itemCode) as star from Item as I where itemCode=#{item}")
 	Item selectByItem(Map<String, Object> param);
 
 	@Select("select * from Review where itemCode=#{item}")
@@ -29,16 +29,16 @@ public interface ItemMapper {
 	@Insert("insert into Cart(itemCode, email, quantity) values(#{itemCode},#{email}, #{quantity})")
 	void setCart(Cart cart);
 
-	@Select("select * from Item ")
+	@Select("select I.itemCode, I.item, I.price, I.file_name, I.quantity, I.category, (select sum(quantity) from PurchaseOrder where itemCode=I.itemCode) as buy , (select avg(star) from Review where itemCode = I.itemCode) as star from Item as I")
 	List<Item> selectAll();
 
-	@Select("select I.itemCode,I.item,I.price,I.category,I.recommend,I.buy,I.star,I.file_name, count(R.id) as rvCount from Item as I left join Review as R on I.itemCode =R.itemCode where category = #{category} group by itemCode")
+	@Select("select I.itemCode,I.item,I.price,I.category,I.recommend,(select sum(quantity) from PurchaseOrder where itemCode=I.itemCode) as buy , (select avg(star) from Review where itemCode = I.itemCode) as star,I.file_name, count(R.id) as rvCount from Item as I left join Review as R on I.itemCode =R.itemCode where category = #{category} group by itemCode")
 	List<Item> selectByCategory(Map<String, Object> param);
 
-	@Select("select I.itemCode,I.item,I.price,I.category,I.recommend,I.buy,I.star,I.file_name, count(R.id) as rvCount from Item as I left join Review as R on I.itemCode =R.itemCode group by itemCode order by ${order}")
+	@Select("select I.itemCode,I.item,I.price,I.category,I.recommend,(select sum(quantity) from PurchaseOrder where itemCode=I.itemCode) as buy, (select avg(star) from Review where itemCode = I.itemCode) as star,I.file_name, count(R.id) as rvCount from Item as I left join Review as R on I.itemCode =R.itemCode group by itemCode order by ${order}")
 	List<Item> selectByOrder(Map<String, Object> param);
 
-	@Select("select I.itemCode,I.item,I.price,I.category,I.recommend,I.buy,I.star,I.file_name, count(R.id) as rvCount from Item as I left join Review as R on I.itemCode =R.itemCode where category = #{category} group by I.itemCode order by ${order}")
+	@Select("select I.itemCode,I.item,I.price,I.category,I.recommend,(select sum(quantity) from PurchaseOrder where itemCode=I.itemCode) as buy,(select avg(star) from Review where itemCode = I.itemCode) as star,I.file_name, count(R.id) as rvCount from Item as I left join Review as R on I.itemCode =R.itemCode where category = #{category} group by I.itemCode order by ${order}")
 	List<Item> selectByCategoryAndOrder(Map<String, Object> param);
 
 	@Select("select * from Item where item like '%${keyword}%'")

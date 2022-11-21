@@ -47,6 +47,7 @@ public class ItemServiceImpl implements ItemService {
 		return itemDao.selectItemByKeyword(keyword);
 	}
 
+	@Override
 	public Item getItem(Integer item) {
 		// TODO Auto-generated method stub
 		return itemDao.getItem(item);

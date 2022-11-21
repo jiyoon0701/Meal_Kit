@@ -165,11 +165,9 @@
 		                                    <h5 class="fw-bolder"><c:out value="${item.item }"/></h5>
 		                                    <!-- Product price-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
+		                                    	<c:forEach var="i" begin="1" end="${item.star }">
+			                                        <div class="bi-star-fill"></div>
+		                                        </c:forEach>
 	                                   		</div>
 		                                    <p><c:out value="${item.price}"/>원</p>
 		                                </div>

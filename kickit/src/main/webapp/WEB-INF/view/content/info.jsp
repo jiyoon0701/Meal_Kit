@@ -119,8 +119,11 @@
                </div>
                &nbsp;
                   <div>
-                  <p style = "float:left">  고객 리뷰 : </p> <img src="${path}/resources/img/star2.png" style="float: left"
-                     width="150px" />  5.0  <!-- &nbsp; <h3>5/5</h3>  -->
+                  <p style = "float:left; font-size:30px;"> <b> 고객 리뷰 :</b> </p> 
+                  <c:forEach var="i" begin="1" end="${items.star }">
+                  	<div class="bi-star-fill" style="float:left; color:#FF8F52; margin-left:5px; font-size:30px "></div>     
+                  </c:forEach>
+                  <p style="font-size:30px;">${items.star }</p>
                </div>
             </div>
          </div>
@@ -161,7 +164,11 @@
                   <!-- Parent comment-->
 
                   <div class="ms-3">
-                     <img style="" src="${path}/resources/img/star2.png" width="150px" class = "star"/>
+                      <c:forEach var="i" begin="1" end="${review.star }">
+                          <div class="bi-star-fill" style="float:left; color:#FF8F52; margin-left:5px; font-size:30px "></div>
+                       
+                      </c:forEach>
+                      <br>
                      <div class="fw-bold"><h4>${review.title}</h4></div>
 
                      <p>${review.content }</p>
