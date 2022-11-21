@@ -123,6 +123,15 @@ public class ItemDaoImpl implements ItemDao {
 		template.getMapper(ItemMapper.class).deleteItem(param);
 	}
 
+	@Override
+	public void updateItemQuantity(int itemCode, int quantity) {
+		// TODO Auto-generated method stub
+		param.clear();
+		param.put("itemCode", itemCode);
+		param.put("quantity", quantity);
+		template.getMapper(ItemMapper.class).updateItemQuantity(param);
+	}
+
 
 }
 

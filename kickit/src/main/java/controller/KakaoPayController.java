@@ -108,6 +108,8 @@ public class KakaoPayController {
 				purchaseOrder.setQuantity(PO.getQuantity());
 				service.setPurchaseOrder(purchaseOrder);  // 구매 테이블로 들어감.
 				userService.updateUserPoint(point, email);
+				// 수량을 빼자...
+				service.updateItemQuantity(PO.getItemCode(), PO.getQuantity());
 				service.deleteItem(PO.getId());
 			}
 		}
