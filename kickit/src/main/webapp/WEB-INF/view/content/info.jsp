@@ -54,17 +54,17 @@
 </head>
 <body>
    <c:set var="path" value="${pageContext.request.contextPath}" />
-      <!-- Navigation-->
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-       <div class="container px-4 px-lg-5">
-           <a class="navbar-brand" href="http://localhost:8090/kickit/main"><img src="../resources/img/KicIcon.png" style="width:100px;"/> </a>
-           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-           <div class="d-flex">
-        	<a href="http://localhost:8090/kickit/user/login"><i class="bi bi-person-fill"></i></a>
-               <a href="http://localhost:8090/kickit/mypage"><i class="bi bi-cart-fill"></i></a>
-           </div>
-       </div>
-   </nav>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="http://localhost:8090/kickit/main"><img src="../resources/img/KicIcon.png" style="width:100px;"/> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="d-flex">
+         	<a href="http://localhost:8090/kickit/user/login"><i class="bi bi-person-fill"></i></a>
+                <a href="http://localhost:8090/kickit/mypage"><i class="bi bi-cart-fill"></i></a>
+            </div>
+        </div>
+    </nav>
    <!-- Product section-->
    <section class="py-5">
       <div class="container px-4 px-lg-5 my-5">
