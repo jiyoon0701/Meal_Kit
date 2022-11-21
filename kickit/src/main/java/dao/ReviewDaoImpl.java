@@ -26,6 +26,7 @@ public class ReviewDaoImpl implements ReviewDao{
 		param.put("star", review.getStar());
 		param.put("itemCode", review.getItemCode());
 		param.put("picture", review.getPicture());
+		param.put("title", review.getTitle());
 		System.out.println(param);
 		template.getMapper(ReviewMapper.class).insertReview(param);
 	}
