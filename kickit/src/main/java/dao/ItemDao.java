@@ -25,4 +25,6 @@ public interface ItemDao {
 	public void insertPicture(List<String> arr);
 	public void deleteItemByItemCode(String itemCode);
 
+
 }
+

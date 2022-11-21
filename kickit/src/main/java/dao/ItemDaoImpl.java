@@ -123,4 +123,6 @@ public class ItemDaoImpl implements ItemDao {
 		template.getMapper(ItemMapper.class).deleteItem(param);
 	}
 
+
 }
+
