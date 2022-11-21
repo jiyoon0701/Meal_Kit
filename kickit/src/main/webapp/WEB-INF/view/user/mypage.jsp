@@ -75,10 +75,10 @@
 		</div>
 		<div class="mb-3">
 			<label for="title">Point</label> <input type="text"
-				class="form-control" maxlength="30" value="${userinfo.point }"
+				class="form-control" maxlength="30" value="${userinfo.point}"
 				readonly>
 		</div>
-		<div class="float-right">
+		<div class="float-right" style="display: flex;justify-content: end;"> 
 			<input onclick="window.open('http://localhost:8090/kickit/userProfile', 'userProfile', 'width=430, height=500, location=no, status=no, scrollbars=yes');" class="btn" type="submit"
 				value="정보 수정" />
 		</div>
@@ -87,7 +87,7 @@
 	<hr>
 	<div class="container" role="main">
 		<h3 style="text-align: center;">CART LIST</h3>
-	<table class="table">
+	<table class="table table-striped table-horizontal table-bordered mt-3">
 	<thead><tr>
 	<th>상품명</th>
 	<th>담은 수량</th>
@@ -102,14 +102,14 @@
 	<td>${cartList.quantity }</td>
 	<td>${cartList.price }</td>
 	<td><a
-					href="http://localhost:8090/kickit/mypage/deleteCart?id=${cartList.id }">삭제</a></td>
+					href="http://localhost:8090/kickit/mypage/deleteCart?id=${cartList.id}">삭제</a></td>
 	</tr>
 	</tbody>
 	</c:forEach>
 	</table>
 		<p>합계수량 : ${totalqauntity}</p>
 		<p>합계가격 : ${totalPrice}</p>
-		<input type="text" name="point" id="point" placeholder="사용할 포인트 입력"> 
+		<input type="text" name="point" id="point" value =0 placeholder="사용할 포인트 입력"> 
 		<input type="button" id="apibtn" class="btn" value="구매하기">
 	</div>
 	
