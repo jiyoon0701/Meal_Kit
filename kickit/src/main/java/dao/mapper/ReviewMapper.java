@@ -10,7 +10,7 @@ import dto.POARDto;
 
 @Mapper
 public interface ReviewMapper {
-	@Insert("insert into Review(id,date,content,star,itemCode,picture) values(#{id},curdate(),#{content},#{star},#{itemCode},#{picture})")
+	@Insert("insert into Review(id,date,content,star,itemCode,picture,title) values(#{id},curdate(),#{content},#{star},#{itemCode},#{picture},#{title})")
 	public void insertReview(Map<String, Object> param);
 	
 	@Select("select P.id,I.item,P.itemCode,I.price,I.file_name,P.quantity from PurchaseOrder as P, Item as I where P.itemCode = I.itemCode and P.id = ${id}")
