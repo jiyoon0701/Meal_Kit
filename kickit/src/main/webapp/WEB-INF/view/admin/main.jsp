@@ -35,8 +35,6 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="d-flex">
          	<a href="http://localhost:8090/kickit/user/login"><i class="bi bi-person-fill"></i></a>
-                <a href="http://localhost:8090/kickit/content/list"><i class="bi bi-cart-fill"></i></a>
-            </div>
         </div>
     </nav>
     <center>

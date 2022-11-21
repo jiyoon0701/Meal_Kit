@@ -3,9 +3,16 @@ package controller;
 
 
 import java.security.Principal;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,6 +54,15 @@ public class UserController {
 	public String login() { // 로그인 페이지 이동 return
 		return "user/login";
 	}
+	
+	@GetMapping("logout")
+	public String logout(HttpServletRequest request, HttpServletResponse response) {
+		 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	      if (auth != null && auth.isAuthenticated()) {
+	        new SecurityContextLogoutHandler().logout(request, response, auth);
+	      }
+		return "redirect:/main";
+	}
 
 	@RequestMapping("login")
 	public String logindo(Model model, Principal principal) {
@@ -64,6 +80,8 @@ public class UserController {
 
 		return "user/login";
 	}
+	
+	
 	
 
 
