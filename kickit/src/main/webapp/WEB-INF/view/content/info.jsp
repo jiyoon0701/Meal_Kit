@@ -166,7 +166,7 @@
 
                      <div class="flex-shrink-0">
                         <img class="rounded-circle"
-                           src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."
+                           src="${path}/resources/img/${review.picture}" alt="..."
                            width="240px" />
                      </div>
                   </div>

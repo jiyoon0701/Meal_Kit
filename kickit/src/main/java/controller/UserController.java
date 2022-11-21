@@ -46,7 +46,7 @@ public class UserController {
 			mav.addObject("result", "회원가입 실패");
 			return mav;
 		}
-		mav.setViewName("redirect:/login");
+		mav.setViewName("redirect:/user/login");
 		return mav;
 	}
 
@@ -81,25 +81,4 @@ public class UserController {
 		return "user/login";
 	}
 	
-	
-	
-
-
-//	@RequestMapping("main")
-//	public String main(Principal principal, Model model) {
-//		/*
-//		 * controller에서 시큐리티를 통해 로그인 한 사용자정보 얻어오기 : @Controller로 선언된 클래스에서는 메소드 인자로
-//		 * Principal 객체를 통해 사용자 아이디를 얻어올수 있다.
-//		 */
-//
-//		// 1.Principal 객체를 통한 사용자 아이디 얻기
-//		String user_id = principal.getName();
-//		System.out.println("user_id=" + user_id);
-//
-//		model.addAttribute("user_id", user_id);
-//
-//		return "/main";
-//	}
-
-	// 로그아웃 시 -> 세션 해제 잊지 말기!
 }
