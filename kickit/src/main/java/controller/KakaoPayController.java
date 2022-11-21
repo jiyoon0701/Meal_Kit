@@ -39,7 +39,7 @@ public class KakaoPayController {
 	@Autowired
 	private UserService userService;
 
-	static int point = 0;
+	int point = 0;
 	@RequestMapping(value = "/kakaopay", method = { RequestMethod.GET })
 	@ResponseBody
 	public String kakaopay(@RequestParam String totalPrice, @RequestParam String points, Principal principal, PurchaseOrder purchaseOrder)
@@ -53,7 +53,7 @@ public class KakaoPayController {
 			String item = cartList.get(0).getItem(); // 첫번째 상품의 이름
 			
 			point = Integer.parseInt(points);
-			int totalprice = (Integer.parseInt(totalPrice)*totalQuantity) - point;
+			int totalprice = (Integer.parseInt(totalPrice)) - point;
 			System.out.println(totalprice);
 			item = URLEncoder.encode(item + " 외 " + (totalQuantity - 1) + "건", "UTF-8");
 

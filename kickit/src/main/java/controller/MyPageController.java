@@ -51,15 +51,19 @@ public class MyPageController {
 		String email = principal.getName();
 		int totalPrice = 0;
 		int totalqauntity = 0;
+		int itemTotalPrice = 0;
 		User user = userService.getUser(email);
 		List<ItemPurchase> itemPuchase = itemPurchaseService.getItemPurchase(email);
 		List<CartList> cartList = cartService.getCart(email);
 		
 		for (CartList CL : cartList) {
-			totalPrice += CL.getPrice();
+			itemTotalPrice = CL.getPrice() * CL.getQuantity();
+			totalPrice += itemTotalPrice;
 			totalqauntity += CL.getQuantity();
+			itemTotalPrice = 0;
 		}
 		
+		model.addAttribute("itemTotalPrice", itemTotalPrice);
 		model.addAttribute("totalqauntity", totalqauntity);
 		model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("itemPuchase", itemPuchase);

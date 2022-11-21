@@ -2,9 +2,10 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
+<c:set var="path" value="${pageContext.request.contextPath}" />
+<link href="${path}/resources/css/mypage.css" rel="stylesheet">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport"
@@ -12,16 +13,6 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Shop Homepage - Start Bootstrap Template</title>
-<c:set var="path" value="${pageContext.request.contextPath}" />
-
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<!-- Bootstrap icons-->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-	rel="stylesheet" />
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href="${path}/resources/css/mainStyles.css" rel="stylesheet" />
 
 <c:choose>
 	<c:when test="${success eq 'true'}">
@@ -36,65 +27,123 @@
 	<c:otherwise>
 	</c:otherwise>
 </c:choose>
-	
+
 </head>
 <body>
-	<h1>나는 마이페이지</h1>
-	<p>${userinfo.name}님,당신개인페이지에요</p>
-	<div class="contiainer">
-		<div class="form-group">
-			<p>이름 : ${userinfo.name }</p>
-			<p>아이디 : ${userinfo.email }</p>
-			<p>전화번호 : ${userinfo.tel }</p>
-			<p>주소 : ${userinfo.address }</p>
-			<p>포인트 : ${userinfo.point }</p>
-			<button
-				onclick="window.open('http://localhost:8090/kickit/userProfile', 'userProfile', 'width=430, height=500, location=no, status=no, scrollbars=yes');">사용자
-				정보</button>
+	<!--navigation start-->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container px-4 px-lg-5">
+			<a class="navbar-brand"
+				href="http://localhost:8090/kickit/main"><img
+				src="${path}/resources/img/KicIcon.png" style="width: 100px;" /> </a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div>
+				<a href="http://localhost:8090/kickit/user/login"><i
+					class="fas fa-user"></i></a> <a
+					href="http://localhost:8090/kickit/content/list"><i
+					class="bi bi-cart-fill"></i></a>
+			</div>
+		</div>
+	</nav>
+	<!--navigation end-->
+	<div class="container" role="main">
+		<h3 style="text-align: center;">MY PROFILE</h3>
+		<div class="mb-3">
+			<label for="title">Name</label> <input type="text"
+				class="form-control" maxlength="30" value="${userinfo.name }"
+				readonly>
+		</div>
+		<div class="mb-3">
+			<label for="title">Email</label> <input type="text"
+				class="form-control" maxlength="30" value="${userinfo.email }"
+				readonly>
+		</div>
+		<div class="mb-3">
+			<label for="title">Tel</label> <input type="text"
+				class="form-control" maxlength="30" value="${userinfo.tel }"
+				readonly>
+		</div>
+		<div class="mb-3">
+			<label for="title">Address</label> <input type="text"
+				class="form-control" maxlength="30" value="${userinfo.address }"
+				readonly>
+		</div>
+		<div class="mb-3">
+			<label for="title">Point</label> <input type="text"
+				class="form-control" maxlength="30" value="${userinfo.point}"
+				readonly>
+		</div>
+		<div class="float-right" style="display: flex;justify-content: end;"> 
+			<input onclick="window.open('http://localhost:8090/kickit/userProfile', 'userProfile', 'width=430, height=500, location=no, status=no, scrollbars=yes');" class="btn" type="submit"
+				value="정보 수정" />
 		</div>
 	</div>
+	
 	<hr>
-	<div class="contiainer">
-		<c:forEach var="cartList" items="${cartList}">
-			<div class="form-group">
-				<p>장바구니 목록</p>
-				<p>상품이름 : ${cartList.item }</p>
-				<p>수량 : ${cartList.quantity }</p>
-				<p>가격 : ${cartList.price }</p>
-				<a
-					href="http://localhost:8090/kickit/mypage/deleteCart?id=${cartList.id }">삭제</a>
-				<p>
-					체크 <input type="checkbox" name="checkItem"
-						value="${cartList.itemCode}" checked />
-				</p>
-
-				<%-- <img src="${cartList[0].filename }" name="filename"> --%>
-				<hr>
-			</div>
-		</c:forEach>
+	<div class="container" role="main">
+		<h3 style="text-align: center;">CART LIST</h3>
+	<table class="table table-striped table-horizontal table-bordered mt-3">
+	<thead><tr>
+	<th>상품명</th>
+	<th>담은 수량</th>
+	<th>상품 가격</th>
+	<th>장바구니 삭제</th>
+	</tr>
+	</thead>
+	<c:forEach var="cartList" items="${cartList}">
+	<tbody>
+	<tr>
+	<td>${cartList.item }</td>
+	<td>${cartList.quantity }</td>
+	<td>${cartList.price }</td>
+	<td><a
+					href="http://localhost:8090/kickit/mypage/deleteCart?id=${cartList.id}">삭제</a></td>
+	</tr>
+	</tbody>
+	</c:forEach>
+	</table>
 		<p>합계수량 : ${totalqauntity}</p>
 		<p>합계가격 : ${totalPrice}</p>
-		<input type="text" name="point" id="point"> <input
-			type="button" id="apibtn">구매하기
-
+		<input type="text" name="point" id="point" value =0 placeholder="사용할 포인트 입력"> 
+		<input type="button" id="apibtn" class="btn" value="구매하기">
 	</div>
-	<hr>
-	<div class="contiainer">
-		<p>구매한 상품 목록</p>
-		<c:forEach var="itemPuchase" items="${itemPuchase}">
-			<div class="form-group">
-				
-				<p>상품이름 : ${itemPuchase.item }</p>
-				<p>구매수량 : ${itemPuchase.quantity }</p>
-				<p>개당 가격 : ${itemPuchase.price }</p>
-				<p>구매날짜 : ${itemPuchase.date }</p>
+	
 
-				<%-- <img src="${cartList[0].filename }" name="filename"> --%>
-				<hr>
-				<button
-					onclick="window.open('http://localhost:8090/kickit/review?id=${itemPuchase.id}', 'registerReview', 'width=430, height=550, scrollbars=no, resizable=no, toolbars=no, menubar=no ');">리뷰작성</button>
-			</div>
-		</c:forEach>
+	<!-- 이전 장바구니 -->	
+	
+	
+	<hr>
+
+	
+	<div class="container" role="main">
+		<h3 style="text-align: center;">PURCHASED ITEM LIST</h3>
+	<table class="table">
+	<thead><tr>
+	<th>상품명</th>
+	<th>구매 수량</th>
+	<th>상품 가격</th>
+	<th>구매 날짜</th>
+	</tr>
+	</thead>
+	<c:forEach var="itemPuchase" items="${itemPuchase}">
+	<tbody>
+	<tr>
+	<td>${itemPuchase.item }</td>
+	<td>${itemPuchase.quantity }</td>
+	<td>${itemPuchase.price }</td>
+	<td>${itemPuchase.date }</td>
+	<td>
+	<button onclick="window.open('http://localhost:8090/kickit/review?id=${itemPuchase.id}', 'registerReview', 'width=430, height=500, location=no, status=no, scrollbars=yes');">리뷰작성</button></td>
+	</tr>
+	</tbody>
+	</c:forEach>
+	</table>
+
 	</div>
 
 </body>
