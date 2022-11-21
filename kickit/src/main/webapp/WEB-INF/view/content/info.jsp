@@ -8,82 +8,63 @@
 
 <html lang="UTF-8">
 <head>
-<style>
-.box {
-   width: 150px;
-   height: 150px;
-   border-radius: 70%;
-   overflow: hidden;
-}
+	<style>
+	.box {
+	   width: 150px;
+	   height: 150px;
+	   border-radius: 70%;
+	   overflow: hidden;
+	}
+	
+	.profile {
+	   width: 100%;
+	   height: 100%;
+	   object-fit: cover;
+	}
 
-.profile {
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
-}
+	.bi-person-fill,.bi-cart-fill{
+		font-size: 30px;
+		line-height: 30px; 
+		color:#FF8F52;
+		margin-right:20px;
+	}
+	
+	</style>
+	<%-- <sec:csrfMetaTags /> 또는 --%>
+	<meta name="_csrf_header" content="${_csrf.headerName}" />
+	<meta name="_csrf" content="${_csrf.token}" />
+	<meta charset="utf-8" />
+	<meta name="viewport"
+	   content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>Shop Item - Start Bootstrap Template</title>
+	<!-- Favicon-->
+	<!--  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
+	<!-- Bootstrap icons-->
+	<link
+	   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+	   rel="stylesheet" />
+	<!-- Core theme CSS (includes Bootstrap)-->
+	<link href="${path}/resources/css/itemInfo.css" rel="stylesheet"
+	   rel="stylesheet" />
+	<meta charset="EUC-KR">
+	<title>상품 상세 페이지</title>
 
-</style>
-<%-- <sec:csrfMetaTags /> 또는 --%>
-<meta name="_csrf_header" content="${_csrf.headerName}" />
-<meta name="_csrf" content="${_csrf.token}" />
-<meta charset="utf-8" />
-<meta name="viewport"
-   content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
-<title>Shop Item - Start Bootstrap Template</title>
-<!-- Favicon-->
-<!--  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
-<!-- Bootstrap icons-->
-<link
-   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-   rel="stylesheet" />
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href="${path}/resources/css/itemInfo.css" rel="stylesheet"
-   rel="stylesheet" />
-<meta charset="EUC-KR">
-<title>상품 상세 페이지</title>
-
-</head>
-<body>
 </head>
 <body>
    <c:set var="path" value="${pageContext.request.contextPath}" />
-   <!-- Navigation-->
-   <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
-   <%-- <div class="container px-4 px-lg-5">
-         <a class="navbar-brand" href="#!">Start Bootstrap</a>
-         <button class="navbar-toggler" type="button"
-            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-               <li class="nav-item"><a class="nav-link active"
-                  aria-current="page" href="#!">Home</a></li>
-               <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-               <li class="nav-item dropdown"><a
-                  class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
-                  role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                     <li><a class="dropdown-item" href="#!">All Products</a></li>
-                     <li><hr class="dropdown-divider" /></li>
-                     <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                     <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                  </ul></li>
-            </ul>
-            <form class="d-flex">
-               <button class="btn btn-outline-dark" type="submit">
-                  <i class="bi-cart-fill me-1"></i> Cart <span
-                     class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-               </button>
-            </form>
-         </div>
-      </div> --%>
+      <!-- Navigation-->
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       <div class="container px-4 px-lg-5">
+           <a class="navbar-brand" href="http://localhost:8090/kickit/main"><img src="../resources/img/KicIcon.png" style="width:100px;"/> </a>
+           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+           <div class="d-flex">
+        	<a href="http://localhost:8090/kickit/user/login"><i class="bi bi-person-fill"></i></a>
+               <a href="http://localhost:8090/kickit/mypage"><i class="bi bi-cart-fill"></i></a>
+           </div>
+       </div>
    </nav>
-
    <!-- Product section-->
    <section class="py-5">
       <div class="container px-4 px-lg-5 my-5">
@@ -203,37 +184,38 @@
 <meta id="_csrf_header" name="_csrf_header"
    content="${_csrf.headerName}" />
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+
 <script type="text/javascript">   
-$(document).ready(function (){
-   var token = $("meta[name='_csrf']").attr("content");
-    var header = $("meta[name='_csrf_header']").attr("content");
-    $("#purchaseBtn").click(function(){
-      const quantity = $("#quantity").val();
-      const totalQuantity = ${items.quantity};
-      if (quantity > totalQuantity) {
-         alert("수량 초과");
-      }else {          
-         $.ajax({
-            type : 'POST',
-            url:'/kickit/content/cart',
-            dataType: "json",
-            data :{
-               Quantity : quantity,
-               itemCode : ${items.itemCode}
-            },
-            success : function(data){
-               // 흐음..
-            },
-            error : function(error){
-               if (error.status == 200){
-                  alert("장바구니 담기 완료");
-               }
-            },beforeSend : function(xhr){
-               xhr.setRequestHeader(header, token);
-            }
-         }) 
-      }
-         });
-});
+	$(document).ready(function (){
+	   var token = $("meta[name='_csrf']").attr("content");
+	    var header = $("meta[name='_csrf_header']").attr("content");
+	    $("#purchaseBtn").click(function(){
+	      const quantity = $("#quantity").val();
+	      const totalQuantity = ${items.quantity};
+	      if (quantity > totalQuantity) {
+	         alert("수량 초과");
+	      }else {          
+	         $.ajax({
+	            type : 'POST',
+	            url:'/kickit/content/cart',
+	            dataType: "json",
+	            data :{
+	               Quantity : quantity,
+	               itemCode : ${items.itemCode}
+	            },
+	            success : function(data){
+	               // 흐음..
+	            },
+	            error : function(error){
+	               if (error.status == 200){
+	                  alert("장바구니 담기 완료");
+	               }
+	            },beforeSend : function(xhr){
+	               xhr.setRequestHeader(header, token);
+	            }
+	         }) 
+	      }
+	   });
+	});
 </script>
 </html>

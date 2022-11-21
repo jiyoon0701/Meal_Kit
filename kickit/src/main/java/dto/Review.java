@@ -7,7 +7,7 @@ public class Review {
 	
 	private int id;
 	private Date date;
-	private Blob picture; 
+	private String picture; 
 	private String content;
 	private float star;
 	private int itemCode;
@@ -32,10 +32,11 @@ public class Review {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public Blob getPicture() {
+	
+	public String getPicture() {
 		return picture;
 	}
-	public void setPicture(Blob picture) {
+	public void setPicture(String picture) {
 		this.picture = picture;
 	}
 	public String getContent() {

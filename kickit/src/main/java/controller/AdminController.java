@@ -36,7 +36,7 @@ public class AdminController {
 	private ItemService itemService;
 	
 	@Autowired
-	ItemPurchaseService itemPurchaseService;
+	private ItemPurchaseService itemPurchaseService;
 	
 
 	// 상품 등록 페이지 이동

@@ -18,7 +18,7 @@
 <style>
 	img{
 		margin-left:5%;
-		width:80px;
+		width:150px;
 	}
 	.purchaseName_div{
 		float:right;
@@ -55,37 +55,32 @@
 </style>
 <body>
 	<div class="wrapper_div">
-		<div class="subject_div">
-			Review Register
-		</div>
-		<form action="/kickit/review?id=${POARDto.id}" method="POST">
+		<center>
+			<div class="subject_div">
+				<p><b>상품 리뷰 작성</b></p>
+			</div>
+		</center>
+		<form action="/kickit/review?id=${POARDto.id}" enctype="multipart/form-data" method="POST">
 			<div class="input_wrap">			
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<input type="hidden" name="itemCode" value="${POARDto.itemCode}"/>
-				<img src="${POARDto.item }"/>
+				<img src="resources/img/${POARDto.file_name }"/>
 				<div class="purchaseName_div"> 
 					<h2><b>${POARDto.item}</b></h2>
 					<p><b>가격 : ${POARDto.price }원</b></p>
 					<div class="rating_div">
 					<p><b>평점</b></p>
 					<select name="star">
-						<option value=0.5f>0.5</option>
 						<option value=1.0f>1.0</option>
-						<option value=1.5f>1.5</option>
 						<option value=2.0f>2.0</option>
-						<option value=2.5f>2.5</option>
 						<option value=3.0f>3.0</option>
-						<option value=3.5f>3.5</option>
 						<option value=4.0f>4.0</option>
+						<option value=5.0f>5.0</option>
 					</select> 
 				</div>
 				</div>
 				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
+
 				<hr>
 
 				<div class="content_div">
@@ -95,6 +90,9 @@
 					</div>
 					<div class="content">
 						<textarea name="content" placeholder="내용을 입력해주세요"></textarea>
+					</div>
+					<div class="mb-3">
+						<input type="file" multiple="multiple" name="file" class="form-control" required id="file" />
 					</div>
 				</div>
 				<input class="btn btn-outline-secondary" type="submit" value="리뷰 등록"/>

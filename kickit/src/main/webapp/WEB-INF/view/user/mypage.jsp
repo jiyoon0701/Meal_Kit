@@ -92,7 +92,7 @@
 				<%-- <img src="${cartList[0].filename }" name="filename"> --%>
 				<hr>
 				<button
-					onclick="window.open('http://localhost:8090/kickit/review?id=${itemPuchase.id}', 'registerReview', 'width=430, height=500, location=no, status=no, scrollbars=yes');">리뷰작성</button>
+					onclick="window.open('http://localhost:8090/kickit/review?id=${itemPuchase.id}', 'registerReview', 'width=430, height=550, scrollbars=no, resizable=no, toolbars=no, menubar=no ');">리뷰작성</button>
 			</div>
 		</c:forEach>
 	</div>
