@@ -49,7 +49,7 @@
 			
 			<logout
 				logout-url="/user/logout"
-				logout-success-url="/user/main"/>
+				logout-success-url="/main"/>
 			<access-denied-handler
 				error-page="/admin/accessDenied"/>
 	</http>

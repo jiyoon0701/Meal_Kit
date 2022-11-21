@@ -94,7 +94,7 @@
   			.d-flex{
   				float:right;
   			}
-  			.bi-person-fill,.bi-cart-fill{
+  			.bi-person-fill,.bi-cart-fill,.bi-box-arrow-right{
 	  			font-size: 30px;
 	  			line-height: 30px; 
 	  			color:#FF8F52;
@@ -109,8 +109,13 @@
 	                <a class="navbar-brand" href="http://localhost:8090/kickit/main"><img src="resources/img/KicIcon.png" style="width:100px;"/> </a>
 	                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 	                <div class="d-flex">
+	                  <c:if test = "${email eq null }">
 		            	<a href="http://localhost:8090/kickit/user/login"><i class="bi bi-person-fill"></i></a>
+		            </c:if>
+		            <c:if test = "${email ne null }">
 	                    <a href="http://localhost:8090/kickit/mypage"><i class="bi bi-cart-fill"></i></a>
+	                    <a href="http://localhost:8090/kickit/user/logout"><i class="bi bi-box-arrow-right"></i></a>
+	                </c:if>
 	                </div>
 	            </div>
 	        </nav>

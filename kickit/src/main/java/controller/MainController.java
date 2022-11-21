@@ -1,6 +1,7 @@
 package controller;
 
 
+import java.security.Principal;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class MainController {
 	private ItemService itemService;
 	
 	@GetMapping("")
-	public String getItemAll(Model model,HttpServletRequest request) {
+	public String getItemAll(Model model,HttpServletRequest request, Principal principal) {
 		System.out.println("start getItemAll method");
 		String category = request.getParameter("category");
 		String order = request.getParameter("order");
@@ -53,6 +54,12 @@ public class MainController {
 			System.out.println(item);
 		}
 		model.addAttribute("items",items);
+		try {
+			model.addAttribute("email",principal.getName());
+		}catch(Exception e) {
+			System.out.println("로그인 필요");
+		}
+		
 		return "main";
 	}
 	
