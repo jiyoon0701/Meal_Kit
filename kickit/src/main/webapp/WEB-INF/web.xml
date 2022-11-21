@@ -24,20 +24,35 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
-<!--           -->  
+<!--         
+         -->  
   <servlet-mapping>
     <servlet-name>mealKit</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
   <!-- filter : servlet 프로그램 이전에 구동  -->
   <filter>
+  	<filter-name>CharacterEncoding</filter-name>
+  		<filter-class>
+	   	org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+	   <init-param>
+	     <param-name>encoding</param-name>
+	     <param-value>UTF-8</param-value>
+	   </init-param>
+  </filter>
+
+  <filter-mapping>
    <filter-name>CharacterEncoding</filter-name>
-   <filter-class>
-   org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-   <init-param>
-     <param-name>encoding</param-name>
-     <param-value>UTF-8</param-value>
-   </init-param>
+   <url-pattern>/*</url-pattern>
+  </filter-mapping>  
+
+  <filter>
+  <filter-name>encodingFilter</filter-name>
+  <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+  <init-param>
+        <param-name>encoding</param-name>
+        <param-value>UTF-8</param-value>
+  </init-param>
   </filter>
   
   <filter>
@@ -51,7 +66,7 @@
     </filter-mapping>
   
   
-   <!--SpringSecurityFilterChain -->
+   <!--SpringSecurityFilterChain--> 
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -61,10 +76,6 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
   
-  <filter-mapping>
-   <filter-name>CharacterEncoding</filter-name>
-   <url-pattern>/*</url-pattern>
-  </filter-mapping>  
 	
   <filter>
   	<filter-name>httpMethodFilter</filter-name>

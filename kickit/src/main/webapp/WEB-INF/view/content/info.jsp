@@ -8,28 +8,7 @@
 
 <html lang="UTF-8">
 <head>
-	<style>
-	.box {
-	   width: 150px;
-	   height: 150px;
-	   border-radius: 70%;
-	   overflow: hidden;
-	}
 	
-	.profile {
-	   width: 100%;
-	   height: 100%;
-	   object-fit: cover;
-	}
-
-	.bi-person-fill,.bi-cart-fill{
-		font-size: 30px;
-		line-height: 30px; 
-		color:#FF8F52;
-		margin-right:20px;
-	}
-	
-	</style>
 	<%-- <sec:csrfMetaTags /> 또는 --%>
 	<meta name="_csrf_header" content="${_csrf.headerName}" />
 	<meta name="_csrf" content="${_csrf.token}" />
@@ -52,19 +31,53 @@
 	<title>상품 상세 페이지</title>
 
 </head>
+<style>
+	.box {
+	   width: 150px;
+	   height: 150px;
+	   border-radius: 70%;
+	   overflow: hidden;
+	}
+	
+	.profile {
+	   width: 100%;
+	   height: 100%;
+	   object-fit: cover;
+	}
+
+	.bi-person-fill,.bi-cart-fill{
+		font-size: 30px;
+		line-height: 30px; 
+		color:#FF8F52;
+		margin-right:20px;
+	}
+
+	.btn-outline-secondary{
+		border-color:#FF8F52;
+		color:#FF8F52;
+	}
+	.btn-outline-secondary:hover{
+		background-color:#FF8F52;
+		border-color:#FF8F52;
+	}
+	.btn-outline-secondary:hover .bi-cart-fill{
+		color:#FFFFFF;
+	}
+	
+	</style>
 <body>
    <c:set var="path" value="${pageContext.request.contextPath}" />
-      <!-- Navigation-->
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-       <div class="container px-4 px-lg-5">
-           <a class="navbar-brand" href="http://localhost:8090/kickit/main"><img src="../resources/img/KicIcon.png" style="width:100px;"/> </a>
-           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-           <div class="d-flex">
-        	<a href="http://localhost:8090/kickit/user/login"><i class="bi bi-person-fill"></i></a>
-               <a href="http://localhost:8090/kickit/mypage"><i class="bi bi-cart-fill"></i></a>
-           </div>
-       </div>
-   </nav>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="http://localhost:8090/kickit/main"><img src="../resources/img/KicIcon.png" style="width:100px;"/> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="d-flex">
+         	<a href="http://localhost:8090/kickit/user/login"><i class="bi bi-person-fill"></i></a>
+                <a href="http://localhost:8090/kickit/mypage"><i class="bi bi-cart-fill"></i></a>
+            </div>
+        </div>
+    </nav>
    <!-- Product section-->
    <section class="py-5">
       <div class="container px-4 px-lg-5 my-5">
@@ -92,8 +105,7 @@
                   <input type="hidden" value="${items.itemCode}" name="itemCode"
                      id="itemCode" /> <input type="hidden"
                      name="${_csrf.parameterName}" value="${_csrf.token}" />
-                  <button class="btn btn-outline-dark flex-shrink-0"
-                     id="purchaseBtn">
+                  <button class="btn btn-outline-secondary" id="purchaseBtn">
                      <i class="bi-cart-fill me-1"></i> 장바구니 담기
                   </button>
                

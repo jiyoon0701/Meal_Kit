@@ -20,21 +20,39 @@
 	.btn-dark{
 		background-color: #FF8F52 !important;
 	}
-	.bi-person-fill,.bi-cart-fill{
+	.bi-person-fill,.bi-cart-fill,.bi-box-arrow-right{
 		font-size: 30px;
 		line-height: 30px; 
 		color:#FF8F52;
 		margin-right:20px;
 	}
+	.btn-outline-secondary{
+		float:right;
+		margin-right:10%;
+		border-color:#FF8F52;
+		color:#FF8F52;
+	}
+	.btn-outline-secondary:hover{
+		background-color:#FF8F52;
+		border-color:#FF8F52;
+	}
 	
 </style>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="http://localhost:8090/kickit/main"><img src="../resources/img/KicIcon.png" style="width:100px;"/> </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="d-flex">
-         	<a href="http://localhost:8090/kickit/user/login"><i class="bi bi-person-fill"></i></a>
+				<c:if test = "${email eq null }">
+					<a href="http://localhost:8090/kickit/user/login"><i class="bi bi-person-fill"></i></a>
+				</c:if>
+				<c:if test = "${email ne null }">
+					<a href="http://localhost:8090/kickit/mypage"><i class="bi bi-cart-fill"></i></a>
+					<a href="http://localhost:8090/kickit/user/logout"><i class="bi bi-box-arrow-right"></i></a>
+				</c:if>
+            </div>
         </div>
     </nav>
     <center>
@@ -56,6 +74,8 @@
 		<br>
 		<br>
 		<h5><b>상품</b></h5>
+		<a class="btn btn-outline-secondary mt-auto" href="http://localhost:8090/kickit/admin/create" style="float:right;">상품추가</a>
+		
 		<div style="overflow:auto; width:1500px; height:400px;">
 			<table style = "border= 1; width:1200px;">
 				<thead>

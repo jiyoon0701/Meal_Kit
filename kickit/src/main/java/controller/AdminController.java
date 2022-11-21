@@ -70,7 +70,8 @@ public class AdminController {
 	@PostMapping("/create")
 	public String postcreate(@ModelAttribute("item") Item item, HttpServletRequest request, MultipartFile uploadFile,
 		MultipartHttpServletRequest mtfRequest, HttpSession session) throws IllegalStateException, IOException {
-
+		System.out.println("start admin create Method");
+//		request.setCharacterEncoding("UTF-8");
 		String pdfPath = request.getSession().getServletContext().getRealPath("/resources/img/");
 		System.out.println(pdfPath+"path");
 		// 단일
@@ -82,7 +83,7 @@ public class AdminController {
 	         detailImgFileList.get(0).transferTo(new File(pdfPath +originalFileName ));
 	         item.setFile_name(originalFileName);
 	      }
-
+		 System.out.println(item);
 		 itemService.create(item);
 
 		// 다중
