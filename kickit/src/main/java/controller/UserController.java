@@ -39,7 +39,7 @@ public class UserController {
 			mav.addObject("result", "회원가입 실패");
 			return mav;
 		}
-		mav.setViewName("redirect:/");
+		mav.setViewName("redirect:/login");
 		return mav;
 	}
 

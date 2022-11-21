@@ -31,13 +31,13 @@ public interface ItemMapper {
 	@Select("select * from Item ")
 	List<Item> selectAll();
 
-	@Select("select I.itemCode,I.item,I.price,I.category,I.recommend,I.buy,I.star, count(R.id) as rvCount from Item as I left join Review as R on I.itemCode =R.itemCode where category = #{category} group by itemCode")
+	@Select("select I.itemCode,I.item,I.price,I.category,I.recommend,I.buy,I.star,I.file_name, count(R.id) as rvCount from Item as I left join Review as R on I.itemCode =R.itemCode where category = #{category} group by itemCode")
 	List<Item> selectByCategory(Map<String, Object> param);
 
-	@Select("select I.itemCode,I.item,I.price,I.category,I.recommend,I.buy,I.star, count(R.id) as rvCount from Item as I left join Review as R on I.itemCode =R.itemCode group by itemCode order by ${order}")
+	@Select("select I.itemCode,I.item,I.price,I.category,I.recommend,I.buy,I.star,I.file_name, count(R.id) as rvCount from Item as I left join Review as R on I.itemCode =R.itemCode group by itemCode order by ${order}")
 	List<Item> selectByOrder(Map<String, Object> param);
 
-	@Select("select I.itemCode,I.item,I.price,I.category,I.recommend,I.buy,I.star, count(R.id) as rvCount from Item as I left join Review as R on I.itemCode =R.itemCode where category = #{category} group by I.itemCode order by ${order}")
+	@Select("select I.itemCode,I.item,I.price,I.category,I.recommend,I.buy,I.star,I.file_name, count(R.id) as rvCount from Item as I left join Review as R on I.itemCode =R.itemCode where category = #{category} group by I.itemCode order by ${order}")
 	List<Item> selectByCategoryAndOrder(Map<String, Object> param);
 
 	@Select("select * from Item where item like '%${keyword}%'")
