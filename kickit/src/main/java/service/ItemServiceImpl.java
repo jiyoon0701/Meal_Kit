@@ -97,4 +97,10 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		itemDao.deleteItemByItemCode(itemCode);
 	}
+
+	@Override
+	public void updateItemQuantity(int itemCode, int quantity) {
+		// TODO Auto-generated method stub
+		itemDao.updateItemQuantity(itemCode, quantity);
+	}
 }

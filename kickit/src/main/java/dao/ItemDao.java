@@ -24,7 +24,7 @@ public interface ItemDao {
 	public void create(Item item);
 	public void insertPicture(List<String> arr);
 	public void deleteItemByItemCode(String itemCode);
-
+	public void updateItemQuantity(int itemCode, int quantity);
 
 }
 
