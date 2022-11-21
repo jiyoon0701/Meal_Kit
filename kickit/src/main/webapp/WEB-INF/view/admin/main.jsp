@@ -26,6 +26,16 @@
 		color:#FF8F52;
 		margin-right:20px;
 	}
+	.btn-outline-secondary{
+		float:right;
+		margin-right:10%;
+		border-color:#FF8F52;
+		color:#FF8F52;
+	}
+	.btn-outline-secondary:hover{
+		background-color:#FF8F52;
+		border-color:#FF8F52;
+	}
 	
 </style>
 <body>
@@ -58,6 +68,8 @@
 		<br>
 		<br>
 		<h5><b>상품</b></h5>
+		<a class="btn btn-outline-secondary mt-auto" href="http://localhost:8090/kickit/admin/create" style="float:right;">상품추가</a>
+		
 		<div style="overflow:auto; width:1500px; height:400px;">
 			<table style = "border= 1; width:1200px;">
 				<thead>
