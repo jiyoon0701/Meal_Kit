@@ -3,6 +3,7 @@ package dao.mapper;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import dto.Cart;
 import dto.Image;
@@ -60,4 +61,7 @@ public interface ItemMapper {
 	
 	@Delete("delete from Cart where id=#{id}")
 	void deleteCart(int id);
+
+	@Update("update Item set quantity = quantity - #{quantity} where itemCode = #{itemCode}")
+	void updateItemQuantity(Map<String, Object> param);
 }
