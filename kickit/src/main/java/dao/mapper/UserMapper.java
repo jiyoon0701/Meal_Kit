@@ -26,5 +26,9 @@ public interface UserMapper {
 	@Update("UPDATE User SET point=((select point from(select point from User where email=#{email})A)-#{point}) WHERE email=#{email}")
 	 void updateUserPoint(Map<String, Object> param);
 
+	@Update("UPDATE User set point = point+100 where email = #{email}")
+	void reviewPoint(Map<String, Object> param);
+	
+
 }
 

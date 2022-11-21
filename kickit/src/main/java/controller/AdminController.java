@@ -2,6 +2,7 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +45,7 @@ public class AdminController {
 	getcreate() throws Exception { return "admin/create"; }
 
 	@GetMapping("main")
-	public String getAdmin(Model model) {
+	public String getAdmin(Model model, Principal principal) {
 		System.out.println("start getAdmin Method");
 		List<ItemPurchase> revenues = itemPurchaseService.getRevenue();
 		List<Item> items = itemService.getItem();
@@ -55,7 +56,14 @@ public class AdminController {
 		int index = revenues.toString().indexOf("=");
 		model.addAttribute("itemPurchaseList",revenues.toString().substring(index+1));
 		model.addAttribute(items);
+		
 		model.addAttribute("quantities",quantities);
+		try {
+			model.addAttribute("email", principal.getName());
+		}catch(Exception e) {
+			System.out.println("관리자 로그인 필요");
+		}
+		
 		System.out.println(model);
 		return "admin/main";
 	}

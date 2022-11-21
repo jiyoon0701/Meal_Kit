@@ -69,6 +69,7 @@ public class MyPageController {
 		model.addAttribute("itemPuchase", itemPuchase);
 		model.addAttribute("userinfo", user);
 		model.addAttribute("cartList", cartList);
+		model.addAttribute("email", email);
 	
 		return "user/mypage";
 	}

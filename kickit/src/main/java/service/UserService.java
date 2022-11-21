@@ -7,4 +7,5 @@ public interface UserService {
 	public User getUser(String email);
 	public void updateUserProfile(User user);
 	public void updateUserPoint(int point, String email);
+	public void reviewPoint(String email);
 }

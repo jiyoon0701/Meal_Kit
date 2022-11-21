@@ -45,7 +45,7 @@
 	   object-fit: cover;
 	}
 
-	.bi-person-fill,.bi-cart-fill{
+	.bi-person-fill,.bi-cart-fill,.bi-box-arrow-right{
 		font-size: 30px;
 		line-height: 30px; 
 		color:#FF8F52;
@@ -68,16 +68,21 @@
 <body>
    <c:set var="path" value="${pageContext.request.contextPath}" />
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="http://localhost:8090/kickit/main"><img src="../resources/img/KicIcon.png" style="width:100px;"/> </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="d-flex">
-         	<a href="http://localhost:8090/kickit/user/login"><i class="bi bi-person-fill"></i></a>
-                <a href="http://localhost:8090/kickit/mypage"><i class="bi bi-cart-fill"></i></a>
-            </div>
-        </div>
-    </nav>
+	        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+	            <div class="container px-4 px-lg-5">
+	                <a class="navbar-brand" href="http://localhost:8090/kickit/main"><img src="${path}/resources/img/KicIcon.png" style="width:100px;"/> </a>
+	                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+	                <div class="d-flex">
+	                  <c:if test = "${email eq null }">
+		            	<a href="http://localhost:8090/kickit/user/login"><i class="bi bi-person-fill"></i></a>
+		            </c:if>
+		            <c:if test = "${email ne null }">
+	                    <a href="http://localhost:8090/kickit/mypage"><i class="bi bi-cart-fill"></i></a>
+	                    <a href="http://localhost:8090/kickit/user/logout"><i class="bi bi-box-arrow-right"></i></a>
+	                </c:if>
+	                </div>
+	            </div>
+	        </nav>
    <!-- Product section-->
    <section class="py-5">
       <div class="container px-4 px-lg-5 my-5">
@@ -115,11 +120,9 @@
                &nbsp;
                   <div>
                   <p style = "float:left">  고객 리뷰 : </p> <img src="${path}/resources/img/star2.png" style="float: left"
-                     width="150px" />  4.5  <!-- &nbsp; <h3>5/5</h3>  -->
+                     width="150px" />  5.0  <!-- &nbsp; <h3>5/5</h3>  -->
                </div>
-
             </div>
-
          </div>
          <hr>
          <div>

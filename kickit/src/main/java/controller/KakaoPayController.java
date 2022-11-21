@@ -110,6 +110,7 @@ public class KakaoPayController {
 				service.updateItemQuantity(PO.getItemCode(), PO.getQuantity());
 				service.deleteItem(PO.getId());
 			}
+			
 			userService.updateUserPoint(point, email);
 		}
 		mav.addObject("success", success);

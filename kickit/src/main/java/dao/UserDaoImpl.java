@@ -50,4 +50,12 @@ public class UserDaoImpl implements UserDao{
 	      template.getMapper(UserMapper.class).updateUserPoint(param);
 	   }
 
+	@Override
+	public void reviewPoint(String email) {
+		// TODO Auto-generated method stub
+		param.clear();
+	      param.put("email", email);
+	      template.getMapper(UserMapper.class).reviewPoint(param);
+	}
+
 }

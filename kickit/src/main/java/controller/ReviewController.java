@@ -2,6 +2,7 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,12 +23,16 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import dto.POARDto;
 import dto.Review;
 import service.ReviewService;
+import service.UserService;
 
 @Controller
 @RequestMapping("review")
 public class ReviewController {
 	@Autowired
 	ReviewService reviewService;
+	
+	@Autowired
+	UserService userService;
 	
 	@GetMapping("")
 	public String getReviewById(@RequestParam("id") int id,Model model) {
@@ -39,7 +44,7 @@ public class ReviewController {
 	}
 	
 	@PostMapping("")
-	public String setReviewById(@ModelAttribute Review review,HttpServletRequest request,MultipartHttpServletRequest mtfRequest, MultipartFile uploadFile)throws IllegalStateException, IOException {
+	public String setReviewById(@ModelAttribute Review review,HttpServletRequest request,MultipartHttpServletRequest mtfRequest, MultipartFile uploadFile, Principal principal)throws IllegalStateException, IOException {
 		System.out.println("start setReviewById");
 		String pdfPath = request.getSession().getServletContext().getRealPath("/resources/img/");
 		List<MultipartFile> detailImgFileList = mtfRequest.getFiles("file");
@@ -50,8 +55,13 @@ public class ReviewController {
 	         review.setPicture(originalFileName);
 	      }
 		System.out.println(review);
-		reviewService.setReviewById(review);
-
+		reviewService.setReviewById(review); // 리뷰 작성
+		try {
+			userService.reviewPoint(principal.getName());
+		}catch(Exception e) {
+			System.out.println("로그인 필요");
+		}
+		
 		return "redirect:/review?id="+Integer.toString(review.getId());
 	}
 	

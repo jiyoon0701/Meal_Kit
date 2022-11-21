@@ -13,8 +13,20 @@
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
    </head>
    <!-- 배경 색 <body bgcolor="#FF8F52"> 인데 이상해서 흰색으로 함 -->
+   <script type="text/javascript">   
+	function sign_click(){
+		const pass = document.getElementById('password');
+		const passCk = document.getElementById('passwordCK');
+		
+		if (pass != passCk){
+			alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+			
+		}
+	}
+</script>
 <body>
 <c:url value="/loginAction" var="loginUrl" />
   <div class="container">
@@ -90,13 +102,13 @@
                 <input type="text" placeholder="Enter your Phone Number" id = "tel" name = "tel" required>
               </div>
               <div class="input-box">
-                <i class="fa-solid fa-house-window"></i>
+              <i class="bi bi-house-fill"></i>
                 <input type="text" placeholder="Enter your address" id = "address" name = "address" required>
               </div>
               <input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" />
               <div class="button input-box">
-                <input type="submit" value="Sumbit">
+                <input type="submit" value="Sumbit" onclick="sign_click()" >
               </div>
               <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
             </div>

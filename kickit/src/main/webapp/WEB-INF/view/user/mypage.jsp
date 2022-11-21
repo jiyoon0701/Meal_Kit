@@ -6,6 +6,10 @@
 <html lang="en" dir="ltr">
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <link href="${path}/resources/css/mypage.css" rel="stylesheet">
+<!-- Bootstrap icons-->
+	<link
+	   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+	   rel="stylesheet" />
 <head>
 <meta charset="utf-8" />
 <meta name="viewport"
@@ -13,7 +17,40 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Shop Homepage - Start Bootstrap Template</title>
+<style>
+	.box {
+	   width: 150px;
+	   height: 150px;
+	   border-radius: 70%;
+	   overflow: hidden;
+	}
+	
+	.profile {
+	   width: 100%;
+	   height: 100%;
+	   object-fit: cover;
+	}
 
+	.bi-person-fill,.bi-cart-fill,.bi-box-arrow-right{
+		font-size: 30px;
+		line-height: 30px; 
+		color:#FF8F52;
+		margin-right:20px;
+	}
+
+	.btn-outline-secondary{
+		border-color:#FF8F52;
+		color:#FF8F52;
+	}
+	.btn-outline-secondary:hover{
+		background-color:#FF8F52;
+		border-color:#FF8F52;
+	}
+	.btn-outline-secondary:hover .bi-cart-fill{
+		color:#FFFFFF;
+	}
+	
+	</style>
 <c:choose>
 	<c:when test="${success eq 'true'}">
 		<script>alert("결제 성공");</script>
@@ -30,25 +67,23 @@
 
 </head>
 <body>
-	<!--navigation start-->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" href="http://localhost:8090/kickit/main"><img
-				src="${path}/resources/img/KicIcon.png" style="width: 100px;" /> </a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div>
-				<a href="http://localhost:8090/kickit/user/login"><i
-					class="fas fa-user"></i></a> <a
-					href="http://localhost:8090/kickit/content/list"><i
-					class="bi bi-cart-fill"></i></a>
-			</div>
-		</div>
-	</nav>
+	  <!-- Navigation-->
+	        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+	            <div class="container px-4 px-lg-5">
+	                <a class="navbar-brand" href="http://localhost:8090/kickit/main"><img src="${path}/resources/img/KicIcon.png" style="width:100px;"/> </a>
+	                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+	                <div class="d-flex">
+	                  <c:if test = "${email eq null }">
+		            	<a href="http://localhost:8090/kickit/user/login"><i class="bi bi-person-fill"></i></a>
+		            </c:if>
+		            <c:if test = "${email ne null }">
+	                    <a href="http://localhost:8090/kickit/mypage"><i class="bi bi-cart-fill"></i></a>
+	                    <a href="http://localhost:8090/kickit/user/logout"><i class="bi bi-box-arrow-right"></i></a>
+	                </c:if>
+	                </div>
+	            </div>
+	        </nav>
+   <!-- Product section-->
 	<!--navigation end-->
 	<div class="container" role="main">
 		<h3 style="text-align: center;">MY PROFILE</h3>

@@ -36,4 +36,9 @@ public class UserServiceImpl implements UserService {
 	      userDao.updateUserPoint(point, email);
 	   }
 
+	@Override
+	public void reviewPoint(String email) {
+		// TODO Auto-generated method stub
+		userDao.reviewPoint(email);
+	}
 }

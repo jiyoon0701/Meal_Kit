@@ -8,4 +8,5 @@ public interface UserDao {
 	public User selectOne(String email);
 	public void updateUserProfile(User user);
 	public void updateUserPoint(int point, String email);
+	public void reviewPoint(String email);
 }

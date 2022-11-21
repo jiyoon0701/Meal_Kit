@@ -25,7 +25,7 @@ public class ItemController {
 	ItemServiceImpl service;
 
 	@GetMapping("info")
-	public ModelAndView info(@RequestParam("item") Integer item) {
+	public ModelAndView info(@RequestParam("item") Integer item, Principal principal) {
 		ModelAndView mav = new ModelAndView();
 		ArrayList<String> pictures = new ArrayList<>();
 		Item items = service.getItem(item);
@@ -42,6 +42,13 @@ public class ItemController {
 		mav.addObject("items", items); // item 객체에
 		mav.addObject("Review", review);
 		mav.addObject("pictures", pictures);
+		try {
+			mav.addObject("email", principal.getName());
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("로그인 필요");
+		}
+
 		return mav;
 	}
 

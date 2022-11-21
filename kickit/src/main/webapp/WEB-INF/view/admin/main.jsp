@@ -20,7 +20,7 @@
 	.btn-dark{
 		background-color: #FF8F52 !important;
 	}
-	.bi-person-fill,.bi-cart-fill,.bi-box-arrow-right{
+	.bi-person-fill,.bi-cart-fill,.bi-box-arrow-right,.bi-bank{
 		font-size: 30px;
 		line-height: 30px; 
 		color:#FF8F52;
@@ -51,6 +51,9 @@
 				<c:if test = "${email ne null }">
 					<a href="http://localhost:8090/kickit/mypage"><i class="bi bi-cart-fill"></i></a>
 					<a href="http://localhost:8090/kickit/user/logout"><i class="bi bi-box-arrow-right"></i></a>
+					<c:if test = "${email eq 'admin'}">
+					<a href="http://localhost:8090/kickit/admin/create"><i class="bi bi-bank"></i></a>
+					</c:if>
 				</c:if>
             </div>
         </div>
