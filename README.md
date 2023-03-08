@@ -20,4 +20,54 @@ Spring
 DB : MySQL  
 Communication Tools : Slack, Figma
 
-# 레이아웃 정의서
+## 시스템 아키텍처
+
+<img
+    src="https://user-images.githubusercontent.com/83527046/223745429-c5daf0e8-44ee-40cd-86c3-00d6b2e03cdf.png"
+    width="600"
+  />
+
+##  페이지 소개
+
+### 메인페이지
+
+<img
+    src="https://user-images.githubusercontent.com/83527046/223747473-e6ddc3b0-0b95-4c74-abcd-2c0d05b7ce94.png"
+    width="400"
+  />
+  
+### 상품 정보 및 후기 
+
+<img
+    src="https://user-images.githubusercontent.com/83527046/223746142-7d5366ef-bae4-4a55-a75b-915ee92de15a.png"
+    width="400"
+  />
+  
+### 마이프로필
+
+<img
+    src="https://user-images.githubusercontent.com/83527046/223746230-b84c8fe2-db1f-4672-911f-ee6ada4ef575.png"
+    width="400"
+  />
+  
+### 결제 창
+
+<img
+    src="https://user-images.githubusercontent.com/83527046/223746417-94e64628-7263-41bb-92bc-5a89bdac2dab.png"
+    width="400"
+  />
+
+### 관리자 전용 - 상품 등록
+
+<img
+    src="https://user-images.githubusercontent.com/83527046/223746375-6c4c56aa-0e09-42ec-89de-cf2bce67cdf8.png"
+    width="400"
+  />
+
+### 관리자 전용 - 매출, 재고 통계 및 상품 현황 확인
+
+<img
+    src="https://user-images.githubusercontent.com/83527046/223746592-94573e1f-1e90-4974-b3db-1a9d0648c2c7.png"
+    width="400"
+  />
+
